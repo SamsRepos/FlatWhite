@@ -2,26 +2,31 @@
 
 #include "common/Util.h"
 
-void gfx::RectangleShape::setRotation(float rotation)
+namespace fw
 {
-	sf::RectangleShape::setRotation(
-		util::radiansToDegrees(rotation)
-	);
-}
 
-float gfx::RectangleShape::getRotation() const
-{
-	return util::degreesToRadians(
-		sf::RectangleShape::getRotation()
-	);
-}
+	void RectangleShape::setRotation(float rotation)
+	{
+		sf::RectangleShape::setRotation(
+			util::radiansToDegrees(rotation)
+		);
+	}
 
-void gfx::RectangleShape::setTint(const Colour& colour)
-{
-	sf::RectangleShape::setFillColor(colour);
-}
+	float RectangleShape::getRotation() const
+	{
+		return util::degreesToRadians(
+			sf::RectangleShape::getRotation()
+		);
+	}
 
-const gfx::Colour& gfx::RectangleShape::getTint() const
-{
-	return sf::RectangleShape::getFillColor();
+	void RectangleShape::setTint(const Colour& colour)
+	{
+		sf::RectangleShape::setFillColor(colour);
+	}
+
+	const Colour& RectangleShape::getTint() const
+	{
+		return sf::RectangleShape::getFillColor();
+	}
+
 }

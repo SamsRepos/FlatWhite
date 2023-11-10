@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace gfx
+namespace fw
 {
 
 typedef sf::RenderTarget RenderTarget;

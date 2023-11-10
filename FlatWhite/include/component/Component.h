@@ -4,20 +4,24 @@
 #include "system/Graphics.h"
 #include "system/Input.h"
 
-class GameObject;
-
-
-class Component
+namespace fw
 {
-public:
-	Component(GameObject* owner);
 
-	virtual void update(float deltaTime) = 0;
-	virtual void lateUpdate() { };
+	class GameObject;
 
-protected:
-	inline GameObject* getOwner() const { return m_owner; };
+	class Component
+	{
+	public:
+		Component(GameObject* owner);
 
-private:
-	GameObject* m_owner;
-};
+		virtual void update(float deltaTime) = 0;
+		virtual void lateUpdate() { };
+
+	protected:
+		inline GameObject* getOwner() const { return m_owner; };
+
+	private:
+		GameObject* m_owner;
+	};
+
+}

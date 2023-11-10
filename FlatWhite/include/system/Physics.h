@@ -2,7 +2,7 @@
 
 #include <box2d/box2d.h>
 
-namespace phx
+namespace fw
 {
 
 typedef b2World        World;

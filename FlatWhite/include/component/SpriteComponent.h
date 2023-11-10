@@ -2,36 +2,40 @@
 
 #include "RenderableComponent.h"
 
-class SpriteComponent : public RenderableComponent
+namespace fw
 {
-public:
-	SpriteComponent(
-		GameObject* owner,
-		std::shared_ptr<gfx::Texture> texture
-	);
 
-	virtual void update(float deltaTime);
-	virtual void render(gfx::RenderTarget* window);
+	class SpriteComponent : public RenderableComponent
+	{
+	public:
+		SpriteComponent(
+			GameObject* owner,
+			std::shared_ptr<Texture> texture
+		);
 
-	Vec2f getSize() const;
+		virtual void update(float deltaTime);
+		virtual void render(RenderTarget* window);
 
-	void setPosition(const Vec2f& position);
-	const Vec2f& getPosition() const;
-	void setRotation(float rotation);
-	float getRotation() const;
-	void setTint(const gfx::Colour& colour);
-	const gfx::Colour& getTint() const;
+		Vec2f getSize() const;
 
-	void setPositionLocked(bool locked);
-	bool getPositionLocked() const;
-	void setRotationLocked(bool locked);
-	bool getRotationLocked() const;
+		void setPosition(const Vec2f& position);
+		const Vec2f& getPosition() const;
+		void setRotation(float rotation);
+		float getRotation() const;
+		void setTint(const Colour& colour);
+		const Colour& getTint() const;
 
-private:
-	std::shared_ptr<gfx::Texture> m_texture;
-	gfx::RectangleShape m_rectangleShape;
+		void setPositionLocked(bool locked);
+		bool getPositionLocked() const;
+		void setRotationLocked(bool locked);
+		bool getRotationLocked() const;
 
-	bool m_positionLocked = true;
-	bool m_rotationLocked = true;
-};
+	private:
+		std::shared_ptr<Texture> m_texture;
+		RectangleShape m_rectangleShape;
 
+		bool m_positionLocked = true;
+		bool m_rotationLocked = true;
+	};
+
+}

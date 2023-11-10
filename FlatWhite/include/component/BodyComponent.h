@@ -4,54 +4,57 @@
 
 #include "system/Physics.h"
 
-enum class BodyShape
-{
-	Box,
-	Ball
-};
+namespace fw {
 
-class BodyComponent : public Component
-{
-public:
-	BodyComponent(
-		GameObject* owner,
-		phx::World* world,
-		int pixelsPerMetre,
-		Vec2f sizeInPixels,
-		BodyShape bodyShape,
-		float density,
-		float restitution,
-		float friction,
-		phx::BodyType type = b2_dynamicBody
-	);
+	enum class BodyShape
+	{
+		Box,
+		Ball
+	};
 
-	virtual void update(float deltaTime);
-	virtual void lateUpdate();
+	class BodyComponent : public Component
+	{
+	public:
+		BodyComponent(
+			GameObject* owner,
+			World* world,
+			int pixelsPerMetre,
+			Vec2f sizeInPixels,
+			BodyShape bodyShape,
+			float density,
+			float restitution,
+			float friction,
+			BodyType type = b2_dynamicBody
+		);
 
-	void setLinearVelocity(const Vec2f& velocity);
-	const Vec2f& getLinearVelocity() const;
-	void setAngularVelocity(float velocity);
-	float getAngularVelocity() const;
-	
-	phx::World* getWorld() const;
-	int getPixelsPerMetre() const;
+		virtual void update(float deltaTime);
+		virtual void lateUpdate();
 
-	bool containsPointMetres(const Vec2f& pointInMetres) const;
-	bool containsPointPixels(const Vec2f& pointInPixels) const;
+		void setLinearVelocity(const Vec2f& velocity);
+		const Vec2f& getLinearVelocity() const;
+		void setAngularVelocity(float velocity);
+		float getAngularVelocity() const;
 
-protected:
-	inline phx::Body* getBody() { return m_body; };
+		World* getWorld() const;
+		int getPixelsPerMetre() const;
 
-	float pixelsToMetres(int pixels) const;
-	int metresToPixels(float metres) const;
+		bool containsPointMetres(const Vec2f& pointInMetres) const;
+		bool containsPointPixels(const Vec2f& pointInPixels) const;
 
-	Vec2f pixelsToMetres(const Vec2f& pixels) const;
-	Vec2f metresToPixels(const Vec2f& metres) const;
+	protected:
+		inline Body* getBody() { return m_body; };
 
-private:
-	phx::Body*    m_body;
-	phx::Fixture* m_fixture;
+		float pixelsToMetres(int pixels) const;
+		int metresToPixels(float metres) const;
 
-	int m_pixelsPerMetre;
-};
+		Vec2f pixelsToMetres(const Vec2f& pixels) const;
+		Vec2f metresToPixels(const Vec2f& metres) const;
 
+	private:
+		Body* m_body;
+		Fixture* m_fixture;
+
+		int m_pixelsPerMetre;
+	};
+
+}

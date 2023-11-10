@@ -3,156 +3,161 @@
 #include "gameObject/GameObject.h"
 #include "common/Util.h"
 
-BodyComponent::BodyComponent(
-	GameObject* owner,
-	phx::World* world,
-	int pixelsPerMetre,
-	Vec2f sizeInPixels,
-	BodyShape bodyShape,
-	float density,
-	float restitution,
-	float friction,
-	phx::BodyType type
-)
-	:
-	Component::Component(owner),
-	m_pixelsPerMetre(pixelsPerMetre)
+namespace fw
 {
-	auto positionInPixels = getOwner()->getPosition();
-	auto positionInMetres = pixelsToMetres(positionInPixels);
 
-	b2BodyDef bodyDef;
-	bodyDef.type = type;
-	bodyDef.position = positionInMetres;
-	bodyDef.angle = getOwner()->getRotation();
-
-	m_body = world->CreateBody(&bodyDef);
-
-	phx::FixtureDef fixtureDef;
-	float halfWidthInPixels  = sizeInPixels.x / 2.f;
-	float halfHeightInPixels = sizeInPixels.y / 2.f;
-
-	phx::Shape* shape = nullptr;
-
-	switch (bodyShape)
+	BodyComponent::BodyComponent(
+		GameObject* owner,
+		World* world,
+		int pixelsPerMetre,
+		Vec2f sizeInPixels,
+		BodyShape bodyShape,
+		float density,
+		float restitution,
+		float friction,
+		BodyType type
+	)
+		:
+		Component::Component(owner),
+		m_pixelsPerMetre(pixelsPerMetre)
 	{
-	case BodyShape::Box:
-	{
-		auto* polyShape = new phx::PolygonShape;
-		polyShape->SetAsBox(
-			pixelsToMetres(halfWidthInPixels),
-			pixelsToMetres(halfHeightInPixels)
-		);
-		shape = polyShape;
-	}
+		auto positionInPixels = getOwner()->getPosition();
+		auto positionInMetres = pixelsToMetres(positionInPixels);
+
+		b2BodyDef bodyDef;
+		bodyDef.type = type;
+		bodyDef.position = positionInMetres;
+		bodyDef.angle = getOwner()->getRotation();
+
+		m_body = world->CreateBody(&bodyDef);
+
+		FixtureDef fixtureDef;
+		float halfWidthInPixels = sizeInPixels.x / 2.f;
+		float halfHeightInPixels = sizeInPixels.y / 2.f;
+
+		Shape* shape = nullptr;
+
+		switch (bodyShape)
+		{
+		case BodyShape::Box:
+		{
+			auto* polyShape = new PolygonShape;
+			polyShape->SetAsBox(
+				pixelsToMetres(halfWidthInPixels),
+				pixelsToMetres(halfHeightInPixels)
+			);
+			shape = polyShape;
+		}
 		break;
-	case BodyShape::Ball:
-	{
-		shape = new phx::CircleShape;
-		shape->m_radius = pixelsToMetres(halfWidthInPixels);
-	}
+		case BodyShape::Ball:
+		{
+			shape = new CircleShape;
+			shape->m_radius = pixelsToMetres(halfWidthInPixels);
+		}
 		break;
+		}
+
+		if (shape)
+		{
+			fixtureDef.shape = shape;
+		}
+		fixtureDef.density = density;
+		fixtureDef.restitution = restitution;
+		fixtureDef.friction = friction;
+
+		m_fixture = m_body->CreateFixture(&fixtureDef);
+
+		m_body->GetUserData().pointer = reinterpret_cast<uintptr_t>(getOwner());
+
+		if (shape)
+		{
+			delete shape;
+		}
 	}
 
-	if (shape)
+	void BodyComponent::update(float deltaTime)
 	{
-		fixtureDef.shape = shape;
+		auto* owner = getOwner();
+
+		owner->setRotation(m_body->GetAngle());
+
+		Vec2f positionInMetres = m_body->GetPosition();
+		Vec2f positionInPixels = metresToPixels(positionInMetres);
+		owner->setPosition(positionInPixels);
 	}
-	fixtureDef.density = density;
-	fixtureDef.restitution = restitution;
-	fixtureDef.friction = friction;
 
-	m_fixture = m_body->CreateFixture(&fixtureDef);
-	
-	m_body->GetUserData().pointer = reinterpret_cast<uintptr_t>(getOwner());
-
-	if (shape)
+	void BodyComponent::lateUpdate()
 	{
-		delete shape;
+		if (getOwner()->isMoribund())
+		{
+			auto* world = m_body->GetWorld();
+			world->DestroyBody(m_body);
+		}
 	}
-}
 
-void BodyComponent::update(float deltaTime)
-{
-	auto* owner = getOwner();
-
-	owner->setRotation(m_body->GetAngle());
-
-	Vec2f positionInMetres = m_body->GetPosition();
-	Vec2f positionInPixels = metresToPixels(positionInMetres);
-	owner->setPosition(positionInPixels);
-}
-
-void BodyComponent::lateUpdate()
-{
-	if (getOwner()->isMoribund())
+	void BodyComponent::setLinearVelocity(const Vec2f& velocity)
 	{
-		auto* world = m_body->GetWorld();
-		world->DestroyBody(m_body);
+		m_body->SetLinearVelocity(velocity);
 	}
-}
 
-void BodyComponent::setLinearVelocity(const Vec2f& velocity)
-{
-	m_body->SetLinearVelocity(velocity);
-}
+	const Vec2f& BodyComponent::getLinearVelocity() const
+	{
+		return m_body->GetLinearVelocity();
+	}
 
-const Vec2f& BodyComponent::getLinearVelocity() const
-{
-	return m_body->GetLinearVelocity();
-}
+	void BodyComponent::setAngularVelocity(float velocity)
+	{
+		m_body->SetAngularVelocity(velocity);
+	}
 
-void BodyComponent::setAngularVelocity(float velocity)
-{
-	m_body->SetAngularVelocity(velocity);
-}
+	float BodyComponent::getAngularVelocity() const
+	{
+		return m_body->GetAngularVelocity();
+	}
 
-float BodyComponent::getAngularVelocity() const
-{
-	return m_body->GetAngularVelocity();
-}
+	World* BodyComponent::getWorld() const
+	{
+		return m_body->GetWorld();
+	}
 
-phx::World* BodyComponent::getWorld() const
-{
-	return m_body->GetWorld();
-}
+	int BodyComponent::getPixelsPerMetre() const
+	{
+		return m_pixelsPerMetre;
+	}
 
-int BodyComponent::getPixelsPerMetre() const
-{
-	return m_pixelsPerMetre;
-}
+	bool BodyComponent::containsPointMetres(const Vec2f& pointInMetres) const
+	{
+		return m_fixture->TestPoint(pointInMetres);
+	}
 
-bool BodyComponent::containsPointMetres(const Vec2f& pointInMetres) const
-{
-	return m_fixture->TestPoint(pointInMetres);
-}
-
-bool BodyComponent::containsPointPixels(const Vec2f& pointInPixels) const
-{
-	return containsPointMetres(pixelsToMetres(pointInPixels));
-}
+	bool BodyComponent::containsPointPixels(const Vec2f& pointInPixels) const
+	{
+		return containsPointMetres(pixelsToMetres(pointInPixels));
+	}
 
 
-//
-// PROTECTED:
-// 
+	//
+	// PROTECTED:
+	// 
 
-float BodyComponent::pixelsToMetres(int pixels) const
-{
-	return util::pixelsToMetres(pixels, m_pixelsPerMetre);
-}
+	float BodyComponent::pixelsToMetres(int pixels) const
+	{
+		return util::pixelsToMetres(pixels, m_pixelsPerMetre);
+	}
 
-int BodyComponent::metresToPixels(float metres) const
-{
-	return util::metresToPixels(metres, m_pixelsPerMetre);
-}
+	int BodyComponent::metresToPixels(float metres) const
+	{
+		return util::metresToPixels(metres, m_pixelsPerMetre);
+	}
 
-Vec2f BodyComponent::pixelsToMetres(const Vec2f& pixels) const
-{
-	return util::pixelsToMetres(pixels, m_pixelsPerMetre);
-}
+	Vec2f BodyComponent::pixelsToMetres(const Vec2f& pixels) const
+	{
+		return util::pixelsToMetres(pixels, m_pixelsPerMetre);
+	}
 
-Vec2f BodyComponent::metresToPixels(const Vec2f& metres) const
-{
-	return util::metresToPixels(metres, m_pixelsPerMetre);
+	Vec2f BodyComponent::metresToPixels(const Vec2f& metres) const
+	{
+		return util::metresToPixels(metres, m_pixelsPerMetre);
+	}
+
 }

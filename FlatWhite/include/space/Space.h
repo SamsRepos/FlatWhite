@@ -7,23 +7,27 @@
 
 #include <list>
 
-class Space
+namespace fw
 {
-public:
-	Space();
-	~Space();
 
-	void addGameObject(std::shared_ptr<GameObject> gameObject);
-	virtual void handleInput(const Input& input);
-	virtual void update(float deltaTime);
-	virtual void lateUpdate();
-	virtual void render(gfx::RenderTarget* window);
+	class Space
+	{
+	public:
+		Space();
+		~Space();
 
-protected:
-	inline const std::list<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; };
+		void addGameObject(std::shared_ptr<GameObject> gameObject);
+		virtual void handleInput(const Input& input);
+		virtual void update(float deltaTime);
+		virtual void lateUpdate();
+		virtual void render(RenderTarget* window);
 
-private:
-	std::list<std::shared_ptr<GameObject>> m_gameObjects;
+	protected:
+		inline const std::list<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; };
 
-};
+	private:
+		std::list<std::shared_ptr<GameObject>> m_gameObjects;
 
+	};
+
+}
