@@ -112,6 +112,10 @@
       <AdditionalLibraryDirectories>C:\SFML-2.6.0\lib;C:\box2d\build\bin\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>box2d.lib;sfml-main.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\SFML-2.6.0\lib;C:\box2d\build\bin\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>box2d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -131,6 +135,10 @@
       <AdditionalLibraryDirectories>C:\SFML-2.6.0\lib;C:\box2d\build\bin\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>box2d.lib;sfml-main.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-network-s.lib;sfml-system-s.lib;sfml-window-s.lib;flac.lib;freetype.lib;ogg.lib;openal32.lib;opengl32.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;winmm.lib;gdi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\SFML-2.6.0\lib;C:\box2d\build\bin\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>box2d.lib;sfml-main.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-network-s.lib;sfml-system-s.lib;sfml-window-s.lib;flac.lib;freetype.lib;ogg.lib;openal32.lib;opengl32.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;winmm.lib;gdi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\include\common\Util.h" />
