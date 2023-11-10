@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\system">
+      <UniqueIdentifier>{6ba30b97-d9df-4894-9932-9a7cd4459937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\space">
+      <UniqueIdentifier>{183cb809-1375-43af-9ac2-698086185676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gameObject">
+      <UniqueIdentifier>{95524246-64d0-483d-93e1-9ef8ff3e9745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\component">
+      <UniqueIdentifier>{8a143459-9ab1-4e07-97db-823a4768d87b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\common">
+      <UniqueIdentifier>{d5b06752-5283-47ca-84de-c2b2bf113c8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\system">
+      <UniqueIdentifier>{e40ab721-c205-47d6-a3c0-287df7b63347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\space">
+      <UniqueIdentifier>{965ea3d7-d688-4910-8040-04a414e5efc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gameObject">
+      <UniqueIdentifier>{cd66084a-f371-47d8-ab2f-d260e5f6550a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\component">
+      <UniqueIdentifier>{73d78a98-a0ff-487e-9526-e7022989c599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{06b7eff1-cf66-4771-8191-ac82520dac12}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\FlatWhite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\system\Graphics.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\system\Input.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\system\Physics.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\space\Space.h">
+      <Filter>Header Files\space</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\space\PhysicsSpace.h">
+      <Filter>Header Files\space</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\gameObject\GameObject.h">
+      <Filter>Header Files\gameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\component\Component.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\component\ParticleSystemComponent.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\component\RenderableComponent.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\component\SpawnerComponent.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\component\SpriteComponent.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\component\BodyComponent.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\common\Vec2f.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\common\Util.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\system\TextureManager.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\system\Input.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\system\Physics.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\system\Graphics.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\space\Space.cpp">
+      <Filter>Source Files\space</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\space\PhysicsSpace.cpp">
+      <Filter>Source Files\space</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameObject\GameObject.cpp">
+      <Filter>Source Files\gameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\RenderableComponent.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\SpawnerComponent.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\SpriteComponent.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\BodyComponent.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\Component.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\ParticleSystemComponent.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\Vec2f.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\Util.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\system\TextureManager.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
