@@ -30,6 +30,8 @@ namespace fw
 		void setRotationLocked(bool locked);
 		bool getRotationLocked() const;
 
+		void setTexture(std::shared_ptr<Texture> texture);
+
 	private:
 		std::shared_ptr<Texture> m_texture;
 		RectangleShape m_rectangleShape;

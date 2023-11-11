@@ -104,4 +104,10 @@ namespace fw
 		return m_rotationLocked;
 	}
 
+	void SpriteComponent::setTexture(std::shared_ptr<Texture> texture)
+	{
+		m_texture = texture;
+		m_rectangleShape.setTexture(m_texture.get());
+	}
+
 }
