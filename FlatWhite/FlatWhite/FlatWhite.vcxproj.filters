@@ -93,6 +93,9 @@
     <ClInclude Include="..\include\system\TextureManager.h">
       <Filter>Header Files\system</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\component\GaugeComponent.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -139,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="..\src\system\TextureManager.cpp">
       <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\GaugeComponent.cpp">
+      <Filter>Source Files\component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

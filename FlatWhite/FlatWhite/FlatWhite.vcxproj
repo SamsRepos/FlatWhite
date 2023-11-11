@@ -145,6 +145,7 @@
     <ClInclude Include="..\include\common\Vec2f.h" />
     <ClInclude Include="..\include\component\BodyComponent.h" />
     <ClInclude Include="..\include\component\Component.h" />
+    <ClInclude Include="..\include\component\GaugeComponent.h" />
     <ClInclude Include="..\include\component\ParticleSystemComponent.h" />
     <ClInclude Include="..\include\component\RenderableComponent.h" />
     <ClInclude Include="..\include\component\SpawnerComponent.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="..\src\common\Vec2f.cpp" />
     <ClCompile Include="..\src\component\BodyComponent.cpp" />
     <ClCompile Include="..\src\component\Component.cpp" />
+    <ClCompile Include="..\src\component\GaugeComponent.cpp" />
     <ClCompile Include="..\src\component\ParticleSystemComponent.cpp" />
     <ClCompile Include="..\src\component\RenderableComponent.cpp" />
     <ClCompile Include="..\src\component\SpawnerComponent.cpp" />

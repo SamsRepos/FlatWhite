@@ -8,6 +8,7 @@
 #include "component/RenderableComponent.h"
 #include "component/SpawnerComponent.h"
 #include "component/SpriteComponent.h"
+#include "component/GaugeComponent.h"
 
 #include "common/Util.h"
 #include "common/Vec2f.h"
