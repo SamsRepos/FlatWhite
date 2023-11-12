@@ -1,15 +1,13 @@
 # FlatWhite
 A 2D game engine framework
 
-A component-based architecture.
-
-Still very much a work in progress.
+A component-based architecture
 
 REQUIREMENTS:
 SFML  https://github.com/SFML/SFML 
 box2d https://github.com/erincatto/box2d
 
-FUTURE REQUIREMENTS WILL ALSO PROBABLY INCLUDE:
+LIKELY FUTURE REQUIREMENTS:
 imgui      https://github.com/ocornut/imgui
 sfml-imgui https://github.com/SFML/imgui-sfml
 

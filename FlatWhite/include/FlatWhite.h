@@ -20,3 +20,5 @@
 #include "system/Input.h"
 #include "system/Physics.h"
 #include "system/TextureManager.h"
+#include "system/DeltaClock.h"
+#include "system/Window.h"

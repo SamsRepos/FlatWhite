@@ -96,6 +96,12 @@
     <ClInclude Include="..\include\component\GaugeComponent.h">
       <Filter>Header Files\component</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\system\DeltaClock.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\system\Window.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -145,6 +151,12 @@
     </ClCompile>
     <ClCompile Include="..\src\component\GaugeComponent.cpp">
       <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\system\DeltaClock.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\system\Window.cpp">
+      <Filter>Source Files\system</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

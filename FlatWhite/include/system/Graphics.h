@@ -6,7 +6,6 @@ namespace fw
 {
 
 typedef sf::RenderTarget RenderTarget;
-typedef sf::RenderWindow RenderWindow;
 typedef sf::Texture      Texture;
 typedef sf::Color        Colour;
 

@@ -154,10 +154,12 @@
     <ClInclude Include="..\include\gameObject\GameObject.h" />
     <ClInclude Include="..\include\space\PhysicsSpace.h" />
     <ClInclude Include="..\include\space\Space.h" />
+    <ClInclude Include="..\include\system\DeltaClock.h" />
     <ClInclude Include="..\include\system\Graphics.h" />
     <ClInclude Include="..\include\system\Input.h" />
     <ClInclude Include="..\include\system\Physics.h" />
     <ClInclude Include="..\include\system\TextureManager.h" />
+    <ClInclude Include="..\include\system\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\common\Util.cpp" />
@@ -172,10 +174,12 @@
     <ClCompile Include="..\src\gameObject\GameObject.cpp" />
     <ClCompile Include="..\src\space\PhysicsSpace.cpp" />
     <ClCompile Include="..\src\space\Space.cpp" />
+    <ClCompile Include="..\src\system\DeltaClock.cpp" />
     <ClCompile Include="..\src\system\Graphics.cpp" />
     <ClCompile Include="..\src\system\Input.cpp" />
     <ClCompile Include="..\src\system\Physics.cpp" />
     <ClCompile Include="..\src\system\TextureManager.cpp" />
+    <ClCompile Include="..\src\system\Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
