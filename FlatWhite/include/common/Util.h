@@ -20,8 +20,8 @@ namespace fw
 		float pixelsToMetres(int pixels, int pixelsPerMetre);
 		int metresToPixels(float metres, int pixelsPerMetre);
 
-		Vec2f pixelsToMetres(Vec2f pixels, int pixelsPerMetre);
-		Vec2f metresToPixels(Vec2f metres, int pixelsPerMetre);
+		Vec2f pixelsToMetres(const Vec2f& pixels, int pixelsPerMetre);
+		Vec2f metresToPixels(const Vec2f& metres, int pixelsPerMetre);
 
 		float radiansToDegrees(float radians);
 		float degreesToRadians(float degrees);
@@ -34,7 +34,7 @@ namespace fw
 		Vec2f randomUnitVec2f();
 
 		template<typename T>
-		T lerp(T a, T b, float t)
+		T lerp(const T& a, const T& b, float t)
 		{
 			return ((1 - t) * a) + (t * b);
 		};
@@ -42,6 +42,15 @@ namespace fw
 		float inverseLerp(float a, float b, float value);
 		float lerpAngleRad(float a, float b, float t);
 		float lerpAngleDeg(float a, float b, float t);
+
+		template<typename T>
+		T clamp(const T& lowerLimit, const T& var, const T& upperLimit)
+		{
+			return std::max(
+				lowerLimit,
+				std::min(var, upperLimit)
+			);
+		};
 
 		size_t deleteMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects);
 

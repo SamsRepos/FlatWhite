@@ -14,7 +14,7 @@ namespace fw {
 		return int(metres * float(pixelsPerMetre));
 	}
 
-	Vec2f util::pixelsToMetres(Vec2f pixels, int pixelsPerMetre)
+	Vec2f util::pixelsToMetres(const Vec2f& pixels, int pixelsPerMetre)
 	{
 		return Vec2f(
 			pixelsToMetres(pixels.x, pixelsPerMetre),
@@ -22,7 +22,7 @@ namespace fw {
 		);
 	}
 
-	Vec2f util::metresToPixels(Vec2f metres, int pixelsPerMetre)
+	Vec2f util::metresToPixels(const Vec2f& metres, int pixelsPerMetre)
 	{
 		return Vec2f(
 			metresToPixels(metres.x, pixelsPerMetre),
