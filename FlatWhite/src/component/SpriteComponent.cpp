@@ -47,6 +47,12 @@ namespace fw
 		window->draw(m_rectangleShape);
 	}
 
+	void SpriteComponent::setSize(const Vec2f& size)
+	{
+		m_rectangleShape.setSize(size);
+		m_rectangleShape.setOrigin(size / 2.f);
+	}
+
 	Vec2f SpriteComponent::getSize() const
 	{
 		return m_rectangleShape.getSize();

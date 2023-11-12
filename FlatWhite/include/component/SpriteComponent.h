@@ -16,6 +16,7 @@ namespace fw
 		virtual void update(float deltaTime);
 		virtual void render(RenderTarget* window);
 
+		void setSize(const Vec2f& size);
 		Vec2f getSize() const;
 
 		void setPosition(const Vec2f& position);
