@@ -9,6 +9,7 @@
 #include "component/SpawnerComponent.h"
 #include "component/SpriteComponent.h"
 #include "component/GaugeComponent.h"
+#include "component/SoundComponent.h"
 
 #include "common/Util.h"
 #include "common/Vec2f.h"
@@ -22,3 +23,5 @@
 #include "system/TextureManager.h"
 #include "system/DeltaClock.h"
 #include "system/Window.h"
+#include "system/Sound.h"
+#include "system/SoundBufferManager.h"

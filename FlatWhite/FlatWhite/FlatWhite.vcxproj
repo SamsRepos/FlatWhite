@@ -114,7 +114,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>C:\SFML-2.6.0\lib;C:\box2d\build\bin\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>box2d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>box2d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,6 +148,7 @@
     <ClInclude Include="..\include\component\GaugeComponent.h" />
     <ClInclude Include="..\include\component\ParticleSystemComponent.h" />
     <ClInclude Include="..\include\component\RenderableComponent.h" />
+    <ClInclude Include="..\include\component\SoundComponent.h" />
     <ClInclude Include="..\include\component\SpawnerComponent.h" />
     <ClInclude Include="..\include\component\SpriteComponent.h" />
     <ClInclude Include="..\include\FlatWhite.h" />
@@ -158,6 +159,8 @@
     <ClInclude Include="..\include\system\Graphics.h" />
     <ClInclude Include="..\include\system\Input.h" />
     <ClInclude Include="..\include\system\Physics.h" />
+    <ClInclude Include="..\include\system\Sound.h" />
+    <ClInclude Include="..\include\system\SoundBufferManager.h" />
     <ClInclude Include="..\include\system\TextureManager.h" />
     <ClInclude Include="..\include\system\Window.h" />
   </ItemGroup>
@@ -169,6 +172,7 @@
     <ClCompile Include="..\src\component\GaugeComponent.cpp" />
     <ClCompile Include="..\src\component\ParticleSystemComponent.cpp" />
     <ClCompile Include="..\src\component\RenderableComponent.cpp" />
+    <ClCompile Include="..\src\component\SoundComponent.cpp" />
     <ClCompile Include="..\src\component\SpawnerComponent.cpp" />
     <ClCompile Include="..\src\component\SpriteComponent.cpp" />
     <ClCompile Include="..\src\gameObject\GameObject.cpp" />
@@ -178,6 +182,8 @@
     <ClCompile Include="..\src\system\Graphics.cpp" />
     <ClCompile Include="..\src\system\Input.cpp" />
     <ClCompile Include="..\src\system\Physics.cpp" />
+    <ClCompile Include="..\src\system\Sound.cpp" />
+    <ClCompile Include="..\src\system\SoundBufferManager.cpp" />
     <ClCompile Include="..\src\system\TextureManager.cpp" />
     <ClCompile Include="..\src\system\Window.cpp" />
   </ItemGroup>

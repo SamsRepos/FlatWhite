@@ -102,6 +102,15 @@
     <ClInclude Include="..\include\system\Window.h">
       <Filter>Header Files\system</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\system\Sound.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\system\SoundBufferManager.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\component\SoundComponent.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -157,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="..\src\system\Window.cpp">
       <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\system\Sound.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\system\SoundBufferManager.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\SoundComponent.cpp">
+      <Filter>Source Files\component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
