@@ -115,6 +115,24 @@ namespace fw
 		return m_body->GetAngularVelocity();
 	}
 
+	void BodyComponent::applyForceToCentre(const Vec2f& force)
+	{
+		m_body->ApplyForceToCenter(force, true);
+	}
+
+	void BodyComponent::applyLinearImpulse(
+		const Vec2f& impulse,
+		const Vec2f& point
+	)
+	{
+		m_body->ApplyLinearImpulse(impulse, point, true);
+	}
+
+	void BodyComponent::applyAngularImpulse(float impulse)
+	{
+		m_body->ApplyAngularImpulse(impulse, true);
+	}
+
 	World* BodyComponent::getWorld() const
 	{
 		return m_body->GetWorld();

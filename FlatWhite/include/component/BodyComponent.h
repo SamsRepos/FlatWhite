@@ -34,6 +34,13 @@ namespace fw {
 		const Vec2f& getLinearVelocity() const;
 		void setAngularVelocity(float velocity);
 		float getAngularVelocity() const;
+		
+		void applyForceToCentre(const Vec2f& force);
+		void applyLinearImpulse(
+			const Vec2f& impulse,
+			const Vec2f& point
+		);
+		void applyAngularImpulse(float impulse);
 
 		World* getWorld() const;
 		int getPixelsPerMetre() const;
