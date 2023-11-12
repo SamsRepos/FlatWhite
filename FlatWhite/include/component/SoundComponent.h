@@ -13,7 +13,7 @@ class SoundComponent : public Component
 public:
 	SoundComponent(GameObject* owner);
 	
-	void createaAndAddSoundInstance(const std::string& name, std::shared_ptr<SoundBuffer> soundBuffer);
+	void createAndAddSoundInstance(const std::string& name, std::shared_ptr<SoundBuffer> soundBuffer);
 	void addSoundInstance(const std::string& name, const SoundInstance& soundInstaance);
 
 	virtual void update(float deltaTime);

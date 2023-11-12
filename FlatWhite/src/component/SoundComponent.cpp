@@ -10,7 +10,7 @@ SoundComponent::SoundComponent(GameObject* owner)
 
 }
 
-void SoundComponent::createaAndAddSoundInstance(
+void SoundComponent::createAndAddSoundInstance(
 	const std::string& name, 
 	std::shared_ptr<SoundBuffer> soundBuffer
 )
