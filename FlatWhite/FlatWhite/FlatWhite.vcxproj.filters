@@ -111,6 +111,9 @@
     <ClInclude Include="..\include\component\SoundComponent.h">
       <Filter>Header Files\component</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\common\Rectangle.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -175,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="..\src\component\SoundComponent.cpp">
       <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\Rectangle.cpp">
+      <Filter>Source Files\common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

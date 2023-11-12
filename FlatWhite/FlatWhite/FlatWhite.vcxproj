@@ -141,6 +141,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\common\Rectangle.h" />
     <ClInclude Include="..\include\common\Util.h" />
     <ClInclude Include="..\include\common\Vec2f.h" />
     <ClInclude Include="..\include\component\BodyComponent.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="..\include\system\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\common\Rectangle.cpp" />
     <ClCompile Include="..\src\common\Util.cpp" />
     <ClCompile Include="..\src\common\Vec2f.cpp" />
     <ClCompile Include="..\src\component\BodyComponent.cpp" />
