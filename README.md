@@ -7,10 +7,6 @@ REQUIREMENTS:
 SFML  https://github.com/SFML/SFML 
 box2d https://github.com/erincatto/box2d
 
-LIKELY FUTURE REQUIREMENTS:
-imgui      https://github.com/ocornut/imgui
-sfml-imgui https://github.com/SFML/imgui-sfml
-
 DEBUG DLLS:
 openal32.dll
 sfml-audio-2.dll
@@ -55,3 +51,13 @@ vorbisfile.lib
 winmm.lib
 gdi32.lib
 ws2_32.lib
+
+ADDITIONAL RELEASE PREPROCESSOR DEFINITIONS:
+SFML_STATIC
+
+//
+
+
+LIKELY FUTURE REQUIREMENTS:
+imgui      https://github.com/ocornut/imgui
+sfml-imgui https://github.com/SFML/imgui-sfml
