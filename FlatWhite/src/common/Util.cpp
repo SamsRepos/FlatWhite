@@ -98,6 +98,11 @@ namespace fw {
 		return angle;
 	}
 
+	float util::directionToAngle(const Vec2f& direction)
+	{
+		return atan2f(direction.x, -direction.y);
+	}
+	
 
 	size_t util::deleteMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects)
 	{

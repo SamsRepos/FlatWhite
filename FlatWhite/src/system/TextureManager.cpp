@@ -11,7 +11,7 @@ namespace fw
 		m_textures[name] = texture;
 	}
 
-	void TextureManager::addTexture(
+	std::shared_ptr<Texture> TextureManager::addTexture(
 		const std::string& name,
 		const std::string& path
 	)
@@ -19,6 +19,7 @@ namespace fw
 		auto texture = std::make_shared<Texture>();
 		texture->loadFromFile(path);
 		addTexture(name, texture);
+		return texture;
 	}
 
 	std::shared_ptr<Texture> TextureManager::getTexture(const std::string& name)

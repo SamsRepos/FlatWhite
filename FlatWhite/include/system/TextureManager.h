@@ -16,10 +16,12 @@ namespace fw
 			const std::string& name,
 			std::shared_ptr<Texture> texture
 		);
-		void addTexture(
+
+		std::shared_ptr<Texture> addTexture(
 			const std::string& name,
 			const std::string& path
 		);
+
 		std::shared_ptr<Texture> getTexture(const std::string& name);
 
 	private:
