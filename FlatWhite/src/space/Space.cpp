@@ -53,7 +53,7 @@ namespace fw
 			object->lateUpdate();
 		}
 
-		util::deleteMoribundGameObjects(m_gameObjects);
+		util::removeMoribundGameObjects(m_gameObjects);
 	}
 
 

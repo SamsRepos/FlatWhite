@@ -104,7 +104,7 @@ namespace fw {
 	}
 	
 
-	size_t util::deleteMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects)
+	size_t util::removeMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects)
 	{
 		size_t deleted_items_num = 0;
 

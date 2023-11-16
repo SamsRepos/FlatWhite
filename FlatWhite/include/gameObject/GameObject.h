@@ -39,7 +39,7 @@ public:
 	inline bool isMoribund() { return m_moribund; };
 
 protected:
-	const std::list<std::shared_ptr<GameObject>>& getChildren();
+	std::list<std::shared_ptr<GameObject>>& getChildren();
 
 private:
 	std::list<std::shared_ptr<GameObject>> m_children;

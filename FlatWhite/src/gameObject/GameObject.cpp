@@ -69,7 +69,7 @@ void GameObject::lateUpdate()
 		child->lateUpdate();
 	}
 
-	util::deleteMoribundGameObjects(m_children);
+	util::removeMoribundGameObjects(m_children);
 }
 
 void GameObject::render(RenderTarget* window)
@@ -95,7 +95,7 @@ void GameObject::collisionResponse(GameObject* other)
 //
 
 
-const std::list<std::shared_ptr<GameObject>>& GameObject::getChildren()
+std::list<std::shared_ptr<GameObject>>& GameObject::getChildren()
 {
 	return m_children;
 }

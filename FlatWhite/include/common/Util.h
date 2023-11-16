@@ -54,7 +54,7 @@ namespace fw
 			);
 		};
 
-		size_t deleteMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects);
+		size_t removeMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects);
 
 		// for polymorphic inheritance only
 		template<typename Base, typename Derived> bool isType(Base* basePtr)
