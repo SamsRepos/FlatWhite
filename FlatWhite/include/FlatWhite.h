@@ -15,6 +15,7 @@
 #include "common/Util.h"
 #include "common/Vec2f.h"
 #include "common/Rectangle.h"
+#include "common/lineSegment.h"
 
 #include "space/PhysicsSpace.h"
 #include "space/Space.h"

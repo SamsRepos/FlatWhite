@@ -103,6 +103,10 @@ namespace fw {
 		return atan2f(direction.x, -direction.y);
 	}
 	
+	float util::dotProduct(const Vec2f& u, const Vec2f& v)
+	{
+		return (u.x * v.x) + (u.y * v.y);
+	}
 
 	size_t util::removeMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects)
 	{

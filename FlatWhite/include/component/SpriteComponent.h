@@ -2,9 +2,10 @@
 
 #include "RenderableComponent.h"
 
+#include "common/Rectangle.h"
+
 namespace fw
 {
-
 	class SpriteComponent : public RenderableComponent
 	{
 	public:
@@ -26,12 +27,15 @@ namespace fw
 		void setTint(const Colour& colour);
 		const Colour& getTint() const;
 
+		Rectangle getGlobalBounds();
+
 		void setPositionLocked(bool locked);
 		bool getPositionLocked() const;
 		void setRotationLocked(bool locked);
 		bool getRotationLocked() const;
 
 		void setTexture(std::shared_ptr<Texture> texture);
+		const std::shared_ptr<Texture>& getTexture() const;
 
 	private:
 		std::shared_ptr<Texture> m_texture;

@@ -88,7 +88,10 @@ namespace fw
 		return m_rectangleShape.getTint();
 	}
 
-
+	Rectangle SpriteComponent::getGlobalBounds()
+	{
+		return m_rectangleShape.getGlobalBounds();
+	}
 
 	void SpriteComponent::setPositionLocked(bool locked)
 	{
@@ -114,6 +117,11 @@ namespace fw
 	{
 		m_texture = texture;
 		m_rectangleShape.setTexture(m_texture.get());
+	}
+
+	const std::shared_ptr<Texture>& SpriteComponent::getTexture() const
+	{
+		return m_texture;
 	}
 
 }

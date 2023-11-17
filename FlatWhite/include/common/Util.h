@@ -54,6 +54,8 @@ namespace fw
 			);
 		};
 
+		float dotProduct(const Vec2f& u, const Vec2f& v);
+		
 		size_t removeMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects);
 
 		// for polymorphic inheritance only

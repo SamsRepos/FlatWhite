@@ -25,14 +25,14 @@ namespace fw
 		auto positionInMetres = pixelsToMetres(positionInPixels);
 
 		b2BodyDef bodyDef;
-		bodyDef.type = type;
+		bodyDef.type     = type;
 		bodyDef.position = positionInMetres;
-		bodyDef.angle = getOwner()->getRotation();
+		bodyDef.angle    = getOwner()->getRotation();
 
 		m_body = world->CreateBody(&bodyDef);
 
 		FixtureDef fixtureDef;
-		float halfWidthInPixels = sizeInPixels.x / 2.f;
+		float halfWidthInPixels  = sizeInPixels.x / 2.f;
 		float halfHeightInPixels = sizeInPixels.y / 2.f;
 
 		Shape* shape = nullptr;

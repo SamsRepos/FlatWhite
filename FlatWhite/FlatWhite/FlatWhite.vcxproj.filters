@@ -114,6 +114,9 @@
     <ClInclude Include="..\include\common\Rectangle.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\common\LineSegment.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -180,6 +183,9 @@
       <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\common\Rectangle.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\LineSegment.cpp">
       <Filter>Source Files\common</Filter>
     </ClCompile>
   </ItemGroup>
