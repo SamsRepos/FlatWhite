@@ -9,7 +9,7 @@ namespace fw
 	class SpawnerComponent : public Component
 	{
 	public:
-		SpawnerComponent(GameObject* owner);
+		SpawnerComponent(GameObject* owner, GameObject* parentForSpawnedObjects);
 
 		virtual void update(float deltaTime);
 
@@ -22,14 +22,16 @@ namespace fw
 
 
 	private:
+		GameObject* m_parentForSpawnedObjects;
 	};
 
 #include <type_traits>
 
 	template<typename GameObject_T>
-	SpawnerComponent<GameObject_T>::SpawnerComponent(GameObject* owner)
+	SpawnerComponent<GameObject_T>::SpawnerComponent(GameObject* owner, GameObject* parentForSpawnedObjects)
 		:
-		Component(owner)
+		Component(owner),
+		m_parentForSpawnedObjects(parentForSpawnedObjects)
 	{
 		bool assertRes = std::is_base_of<GameObject, GameObject_T>();
 		assert(assertRes);
@@ -47,9 +49,11 @@ namespace fw
 		ConstructorArgs_T&&... constructorArgs
 	) const
 	{
-		return std::make_shared<GameObject_T>(
+		std::shared_ptr<GameObject_T> newObject = std::make_shared<GameObject_T>(
 			std::forward<ConstructorArgs_T>(constructorArgs)...
-			);
+		);
+		if (m_parentForSpawnedObjects) m_parentForSpawnedObjects->addChild(newObject);
+		return newObject;
 	}
 
 }
