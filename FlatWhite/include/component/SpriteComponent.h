@@ -28,6 +28,7 @@ namespace fw
 		const Colour& getTint() const;
 
 		Rectangle getGlobalBounds();
+		bool contains(Vec2f point);
 
 		void setPositionLocked(bool locked);
 		bool getPositionLocked() const;

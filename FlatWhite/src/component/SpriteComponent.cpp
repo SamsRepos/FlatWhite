@@ -93,6 +93,30 @@ namespace fw
 		return m_rectangleShape.getGlobalBounds();
 	}
 
+	bool SpriteComponent::contains(Vec2f point)
+	{
+		if(!(getGlobalBounds().contains(point))) return false;
+
+		auto S = sin(-getRotation());
+		auto C = cos(-getRotation());
+
+		auto newPt = point - getPosition();
+		newPt = Vec2f(
+			newPt.x * C - newPt.y * S,
+			newPt.x * S + newPt.y * C
+		);
+		newPt += getPosition();
+
+		Rectangle unrotatedSprite(
+			getPosition().x - (m_rectangleShape.getSize().x / 2.f),
+			getPosition().y - (m_rectangleShape.getSize().y / 2.f),
+			m_rectangleShape.getSize().x,
+			m_rectangleShape.getSize().y
+		);
+
+		return unrotatedSprite.contains(newPt);
+	}
+
 	void SpriteComponent::setPositionLocked(bool locked)
 	{
 		m_positionLocked = locked;
