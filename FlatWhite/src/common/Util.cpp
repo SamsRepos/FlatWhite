@@ -102,6 +102,13 @@ namespace fw {
 	{
 		return atan2f(direction.x, -direction.y);
 	}
+
+	Vec2f util::angleToDirection(float angle)
+	{
+		float x = sin(angle);
+		float y = -cos(angle);
+		return Vec2f(x, y);
+	}
 	
 	float util::dotProduct(const Vec2f& u, const Vec2f& v)
 	{

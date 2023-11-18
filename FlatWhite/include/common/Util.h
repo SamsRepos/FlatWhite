@@ -44,6 +44,7 @@ namespace fw
 		float lerpAngleDeg(float a, float b, float t);
 
 		float directionToAngle(const Vec2f& direction);
+		Vec2f angleToDirection(float angle);
 
 		template<typename T>
 		T clamp(const T& lowerLimit, const T& var, const T& upperLimit)

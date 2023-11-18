@@ -8,6 +8,7 @@ namespace fw
 typedef sf::RenderTarget RenderTarget;
 typedef sf::Texture      Texture;
 typedef sf::Color        Colour;
+typedef sf::Vertex       Vertex;
 
 class RectangleShape : public sf::RectangleShape
 {

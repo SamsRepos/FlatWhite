@@ -149,6 +149,7 @@
     <ClInclude Include="..\include\component\BodyComponent.h" />
     <ClInclude Include="..\include\component\Component.h" />
     <ClInclude Include="..\include\component\GaugeComponent.h" />
+    <ClInclude Include="..\include\component\LineComponent.h" />
     <ClInclude Include="..\include\component\ParticleSystemComponent.h" />
     <ClInclude Include="..\include\component\RenderableComponent.h" />
     <ClInclude Include="..\include\component\SoundComponent.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="..\src\component\BodyComponent.cpp" />
     <ClCompile Include="..\src\component\Component.cpp" />
     <ClCompile Include="..\src\component\GaugeComponent.cpp" />
+    <ClCompile Include="..\src\component\LineComponent.cpp" />
     <ClCompile Include="..\src\component\ParticleSystemComponent.cpp" />
     <ClCompile Include="..\src\component\RenderableComponent.cpp" />
     <ClCompile Include="..\src\component\SoundComponent.cpp" />

@@ -117,6 +117,9 @@
     <ClInclude Include="..\include\common\LineSegment.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\component\LineComponent.h">
+      <Filter>Header Files\component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -187,6 +190,9 @@
     </ClCompile>
     <ClCompile Include="..\src\common\LineSegment.cpp">
       <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\component\LineComponent.cpp">
+      <Filter>Source Files\component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

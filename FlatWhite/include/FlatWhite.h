@@ -11,6 +11,7 @@
 #include "component/SpriteComponent.h"
 #include "component/GaugeComponent.h"
 #include "component/SoundComponent.h"
+#include "component/LineComponent.h"
 
 #include "common/Util.h"
 #include "common/Vec2f.h"
