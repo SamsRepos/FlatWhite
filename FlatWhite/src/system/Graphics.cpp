@@ -4,6 +4,16 @@
 
 namespace fw
 {
+	std::shared_ptr<Texture> Texture::createPlainTexture(unsigned int width, unsigned  int height)
+	{
+		std::vector<sf::Uint8> imageArray;
+		imageArray.reserve(width * height);
+		sf::Image image;
+		image.create(width, height, imageArray.data());
+		auto tex = std::make_shared<Texture>();
+		tex->loadFromImage(image);
+		return tex;
+	}
 
 	void RectangleShape::setRotation(float rotation)
 	{

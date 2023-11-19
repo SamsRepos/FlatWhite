@@ -54,19 +54,29 @@ RenderableComponent(owner),
     m_rotationSlowDown(rotationSlowDown),
     m_velocitySlowDown(velocitySlowDown)
 {
-    m_timeBetweenParticles = 1.f / m_particlesPerSecond;
+    if (m_particlesPerSecond > FLT_EPSILON)
+    {
+        m_timeBetweenParticles = 1.f / m_particlesPerSecond;
+    }
+    else
+    {
+        m_timeBetweenParticles = -1;
+    }
 }
 
 void ParticleSystemComponent::update(float deltaTime)
 {
-    m_spawnTimer -= deltaTime;
-
-    if (m_spawnTimer <= 0.f)
+    if (m_particlesPerSecond > FLT_EPSILON)
     {
-        emitParticles(1);
-        m_spawnTimer = m_timeBetweenParticles;
-    };
+        m_spawnTimer -= deltaTime;
 
+        if (m_spawnTimer <= 0.f)
+        {
+            emitParticles(1);
+            m_spawnTimer = m_timeBetweenParticles;
+        };
+    }
+    
     updateParticles(deltaTime);
 }
 
@@ -77,15 +87,6 @@ void ParticleSystemComponent::render(RenderTarget* window)
         particle.render(window);
     }
 }
-
-void ParticleSystemComponent::clear()
-{
-    m_particles.clear();
-}
-
-//
-// PRIVATE:
-//
 
 void ParticleSystemComponent::emitParticles(int number)
 {
@@ -118,6 +119,28 @@ void ParticleSystemComponent::emitParticles(int number)
         m_particles.push_back(particle);
     }
 }
+
+void ParticleSystemComponent::emitParticles(int number, const Vec2f& sourcePoint)
+{
+    m_sourceMin = m_sourceMax = sourcePoint;
+    emitParticles(number);
+}
+
+void ParticleSystemComponent::emitParticles(int number, const Vec2f& sourceMin, const Vec2f& sourceMax)
+{
+    m_sourceMin = sourceMin;
+    m_sourceMax = sourceMax;
+    emitParticles(number);
+}
+
+void ParticleSystemComponent::clear()
+{
+    m_particles.clear();
+}
+
+//
+// PRIVATE:
+//
 
 void ParticleSystemComponent::updateParticles(float deltaTime)
 {

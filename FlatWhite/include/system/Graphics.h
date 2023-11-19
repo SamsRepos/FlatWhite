@@ -6,9 +6,14 @@ namespace fw
 {
 
 typedef sf::RenderTarget RenderTarget;
-typedef sf::Texture      Texture;
 typedef sf::Color        Colour;
 typedef sf::Vertex       Vertex;
+
+class Texture : public sf::Texture
+{
+public:
+	static std::shared_ptr<Texture> createPlainTexture(unsigned int width, unsigned int height);
+};
 
 class RectangleShape : public sf::RectangleShape
 {

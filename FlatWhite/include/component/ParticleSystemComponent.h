@@ -42,10 +42,13 @@ public:
     virtual void update(float deltaTime);
     virtual void render(RenderTarget* window);
 
+    void emitParticles(int number);
+    void emitParticles(int number, const Vec2f& sourcePoint);
+    void emitParticles(int number, const Vec2f& sourceMin, const Vec2f& sourceMax);
+
     void clear();
 
 private:
-    void emitParticles(int number);
     void updateParticles(float deltaTime);
 
     struct Particle
