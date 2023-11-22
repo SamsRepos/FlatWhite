@@ -60,15 +60,15 @@ namespace fw
 		size_t removeMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& gameObjects);
 
 		// for polymorphic inheritance only
-		template<typename Base, typename Derived> bool isType(Base* basePtr)
+		template<typename Base, typename Derived> bool isType(Base* const& basePtr)
 		{
-			Derived* checkPtr = dynamic_cast<Derived*>(basePtr);
-			if (checkPtr) return true;
+			//Derived* checkPtr = dynamic_cast<Derived*>(basePtr);
+			if (dynamic_cast<Derived*>(basePtr)) return true;
 			else return false;
 		};
 
 		// for polymorphic inheritance only
-		template<typename Base, typename Derived> bool isType(std::shared_ptr<Base> basePtr)
+		template<typename Base, typename Derived> bool isType(const std::shared_ptr<Base>& basePtr)
 		{
 			return isType<Base, Derived>(basePtr.get());
 		};

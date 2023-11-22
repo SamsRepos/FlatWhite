@@ -88,7 +88,7 @@ namespace fw
 		return m_rectangleShape.getTint();
 	}
 
-	Rectangle SpriteComponent::getGlobalBounds()
+	const Rectangle& SpriteComponent::getGlobalBounds()
 	{
 		return m_rectangleShape.getGlobalBounds();
 	}
