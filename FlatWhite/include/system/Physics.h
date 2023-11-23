@@ -5,7 +5,8 @@
 namespace fw
 {
 
-typedef b2World        World;
+//typedef b2World        World;
+
 typedef b2Body         Body;
 typedef b2Fixture      Fixture;
 typedef b2BodyType     BodyType;

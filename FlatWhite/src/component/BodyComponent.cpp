@@ -1,14 +1,17 @@
 #include "component/BodyComponent.h"
 
+#include <cassert>
+
 #include "gameObject/GameObject.h"
 #include "common/Util.h"
+#include "space/PhysicsSpace.h"
 
 namespace fw
 {
 
 	BodyComponent::BodyComponent(
 		GameObject* owner,
-		World* world,
+		PhysicsSpace* physicsSpace,
 		int pixelsPerMetre,
 		Vec2f sizeInPixels,
 		BodyShape bodyShape,
@@ -19,6 +22,7 @@ namespace fw
 	)
 		:
 		Component::Component(owner),
+		m_physicsSpace(physicsSpace),
 		m_pixelsPerMetre(pixelsPerMetre)
 	{
 		auto positionInPixels = getOwner()->getPosition();
@@ -29,7 +33,7 @@ namespace fw
 		bodyDef.position = positionInMetres;
 		bodyDef.angle    = getOwner()->getRotation();
 
-		m_body = world->CreateBody(&bodyDef);
+		m_body = m_physicsSpace->CreateBody(&bodyDef);
 
 		FixtureDef fixtureDef;
 		float halfWidthInPixels  = sizeInPixels.x / 2.f;
@@ -133,9 +137,9 @@ namespace fw
 		m_body->ApplyAngularImpulse(impulse, true);
 	}
 
-	World* BodyComponent::getWorld() const
+	PhysicsSpace* BodyComponent::getPhysicsSpace() const
 	{
-		return m_body->GetWorld();
+		return m_physicsSpace;
 	}
 
 	int BodyComponent::getPixelsPerMetre() const
