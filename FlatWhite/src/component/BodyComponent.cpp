@@ -79,7 +79,7 @@ namespace fw
 		}
 	}
 
-	void BodyComponent::update(float deltaTime)
+	void BodyComponent::update(const float& deltaTime)
 	{
 		auto* owner = getOwner();
 

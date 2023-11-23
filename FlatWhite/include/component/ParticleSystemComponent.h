@@ -39,7 +39,7 @@ public:
 
     );
 
-    virtual void update(float deltaTime);
+    virtual void update(const float& deltaTime);
     virtual void render(RenderTarget* window);
 
     void emitParticles(int number);
@@ -49,7 +49,7 @@ public:
     void clear();
 
 private:
-    void updateParticles(float deltaTime);
+    void updateParticles(const float& deltaTime);
 
     struct Particle
     {

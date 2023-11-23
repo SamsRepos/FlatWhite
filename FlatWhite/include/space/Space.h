@@ -18,7 +18,7 @@ namespace fw
 
 		void addGameObject(std::shared_ptr<GameObject> gameObject);
 		virtual void handleInput(const Input& input);
-		virtual void update(float deltaTime);
+		virtual void update(const float& deltaTime);
 		virtual void lateUpdate();
 		virtual void render(RenderTarget* window);
 

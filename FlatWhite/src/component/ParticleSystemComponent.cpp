@@ -64,7 +64,7 @@ RenderableComponent(owner),
     }
 }
 
-void ParticleSystemComponent::update(float deltaTime)
+void ParticleSystemComponent::update(const float& deltaTime)
 {
     if (m_particlesPerSecond > FLT_EPSILON)
     {
@@ -142,7 +142,7 @@ void ParticleSystemComponent::clear()
 // PRIVATE:
 //
 
-void ParticleSystemComponent::updateParticles(float deltaTime)
+void ParticleSystemComponent::updateParticles(const float& deltaTime)
 {
     std::list<Particle>::iterator current = m_particles.begin();
     std::list<Particle>::iterator next;

@@ -44,7 +44,7 @@ void GameObject::handleInput(const Input& input)
 	}
 }
 
-void GameObject::update(float deltaTime)
+void GameObject::update(const float& deltaTime)
 {
 	for (auto& component : m_components)
 	{
@@ -95,9 +95,5 @@ void GameObject::collisionResponse(GameObject* other)
 //
 
 
-std::list<std::shared_ptr<GameObject>>& GameObject::getChildren()
-{
-	return m_children;
-}
 
 }

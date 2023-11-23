@@ -25,7 +25,7 @@ void LineComponent::setColour(const Colour& colour)
 	m_colour = colour;
 }
 
-void LineComponent::update(float deltaTime)
+void LineComponent::update(const float& deltaTime)
 {
 
 }

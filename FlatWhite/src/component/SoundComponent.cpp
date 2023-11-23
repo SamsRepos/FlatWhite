@@ -27,7 +27,7 @@ void SoundComponent::addSoundInstance(
 	m_soundInstances[name] = soundInstaance;
 }
 
-void SoundComponent::update(float deltaTime)
+void SoundComponent::update(const float& deltaTime)
 {
 
 }

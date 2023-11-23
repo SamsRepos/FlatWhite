@@ -38,7 +38,7 @@ namespace fw
 	}
 
 
-	void Space::update(float deltaTime)
+	void Space::update(const float& deltaTime)
 	{
 		for (auto& object : m_gameObjects)
 		{

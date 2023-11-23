@@ -11,7 +11,7 @@ namespace fw
 	public:
 		SpawnerComponent(GameObject* owner, GameObject* parentForSpawnedObjects);
 
-		virtual void update(float deltaTime);
+		virtual void update(const float& deltaTime);
 
 		template<typename... ConstructorArgs_T>
 		std::shared_ptr<GameObject_T> spawnObject(
@@ -38,7 +38,7 @@ namespace fw
 	}
 
 	template<typename GameObject_T>
-	void SpawnerComponent<GameObject_T>::update(float deltaTime)
+	void SpawnerComponent<GameObject_T>::update(const float& deltaTime)
 	{
 
 	}

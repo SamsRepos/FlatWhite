@@ -24,8 +24,9 @@ public:
 	//void setGameObjectToTrack(GameObject* gameObject, Vec2f offset);
 	// need to think about this. if gameObject is deleted that's bad. for now, update with position will suffice
 
-	virtual void update(const Vec2f& position, float health); // 0.f <= health <= 1.f;
-	virtual void update(float health); // 0.f <= health <= 1.f
+	void updatePosition(const Vec2f& position);
+	void updateHealth(const float& health); // 0.f <= health <= 1.f
+	virtual void update(const float& deltaTime);
 	virtual void render(RenderTarget* window);
 
 protected:
@@ -33,8 +34,8 @@ protected:
 	RectangleShape m_innerRect;
 
 private:
-	void setPosition(Vec2f position);
-	void setSize(Vec2f size);
+	void setPosition(const Vec2f& position);
+	void setSize(const Vec2f& size);
 
 	Vec2f m_innerRectMaxSize;
 	float m_borderWidth;

@@ -36,7 +36,7 @@ void GaugeComponent::addColourThreshold(float threshold, const Colour& colour)
 	std::sort(m_colourThresholds.begin(), m_colourThresholds.end());
 }
 
-void GaugeComponent::update(const Vec2f& position, float health)
+void GaugeComponent::updatePosition(const Vec2f& position)
 {
 	m_outerRect.setPosition(
 		position.x - m_outerRect.getSize().x / 2,
@@ -46,11 +46,9 @@ void GaugeComponent::update(const Vec2f& position, float health)
 	m_innerRect.setPosition(
 		m_outerRect.getPosition() + Vec2f(m_borderWidth, m_borderWidth)
 	);
-
-	update(health);
 }
 
-void GaugeComponent::update(float health)
+void GaugeComponent::updateHealth(const float& health)
 {
 	m_innerRect.setSize(
 		Vec2f(
@@ -69,6 +67,11 @@ void GaugeComponent::update(float health)
 	}
 }
 
+void GaugeComponent::update(const float& deltaTime)
+{
+
+}
+
 void GaugeComponent::render(RenderTarget* window)
 {
 	window->draw(m_outerRect);
@@ -79,13 +82,13 @@ void GaugeComponent::render(RenderTarget* window)
 // PRIVATE:
 //
 
-void GaugeComponent::setPosition(Vec2f position)
+void GaugeComponent::setPosition(const Vec2f& position)
 {
 	m_outerRect.setPosition(position);
 	m_innerRect.setPosition(position + Vec2f(m_borderWidth, m_borderWidth));
 }
 
-void GaugeComponent::setSize(Vec2f size)
+void GaugeComponent::setSize(const Vec2f& size)
 {
 	m_outerRect.setSize(size);
 

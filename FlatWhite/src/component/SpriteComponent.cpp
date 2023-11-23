@@ -30,7 +30,7 @@ namespace fw
 		setRotation(getOwner()->getRotation());
 	}
 
-	void SpriteComponent::update(float deltaTime)
+	void SpriteComponent::update(const float& deltaTime)
 	{
 		if (m_positionLocked)
 		{

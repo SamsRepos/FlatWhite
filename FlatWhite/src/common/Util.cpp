@@ -52,7 +52,7 @@ namespace fw {
 
 	Vec2f util::randomUnitVec2f()
 	{
-		Vec2f res(randomFloat(), randomFloat());
+		Vec2f res(randomFloat(1.f, -1.f), randomFloat(1.f, -1.f));
 		res.normalise();
 		return res;
 	}

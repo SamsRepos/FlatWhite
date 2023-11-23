@@ -29,7 +29,7 @@ public:
 		BodyType type = b2_dynamicBody
 	);
 
-	virtual void update(float deltaTime);
+	virtual void update(const float& deltaTime);
 	virtual void lateUpdate();
 
 	void setLinearVelocity(const Vec2f& velocity);

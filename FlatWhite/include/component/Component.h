@@ -14,7 +14,7 @@ namespace fw
 	public:
 		Component(GameObject* owner);
 
-		virtual void update(float deltaTime) = 0;
+		virtual void update(const float& deltaTime) = 0;
 		virtual void lateUpdate() { };
 
 	protected:

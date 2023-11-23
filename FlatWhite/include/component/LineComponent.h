@@ -17,7 +17,7 @@ public:
 
 	void setColour(const Colour& colour);
 
-	virtual void update(float deltaTime);
+	virtual void update(const float& deltaTime);
 	virtual void render(RenderTarget* window);
 
 private:

@@ -1,6 +1,7 @@
 #include "space/PhysicsSpace.h"
 
 #include "gameObject/GameObject.h"
+#include "common/Util.h"
 
 namespace fw
 {
@@ -23,7 +24,7 @@ PhysicsSpace::PhysicsSpace(
 }
 
 
-void PhysicsSpace::update(float deltaTime)
+void PhysicsSpace::update(const float& deltaTime)
 {
 	Step(deltaTime, 1, 1);
 
@@ -63,6 +64,31 @@ void PhysicsSpace::update(float deltaTime)
 		contact = contact->GetNext();
 	}
 }
+
+//fw::LineSegment PhysicsSpace::rayCast(
+//	const Vec2f& startPoint, 
+//	Vec2f direction
+//)
+//{
+//	fw::Vec2f endPoint = startPoint;
+//	direction.normalise();
+//
+//	while (m_bounds.contains(endPoint))
+//	{
+//		for (const std::shared_ptr<fw::GameObject>& object : getGameObjects())
+//		{
+//			if (object-> .contains(endPoint))
+//		}
+//		endPoint += direction;
+//	}
+//
+//	return fw::LineSegment(startPoint, endPoint);
+//}
+//
+//fw::LineSegment PhysicsSpace::rayCast(const Vec2f& startPoint, const float& angle)
+//{
+//	return rayCast(startPoint, util::angleToDirection(angle));
+//}
 
 //
 //  PROTECTED:

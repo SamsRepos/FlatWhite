@@ -14,7 +14,7 @@ namespace fw
 			std::shared_ptr<Texture> texture
 		);
 
-		virtual void update(float deltaTime);
+		virtual void update(const float& deltaTime);
 		virtual void render(RenderTarget* window);
 
 		void setSize(const Vec2f& size);
