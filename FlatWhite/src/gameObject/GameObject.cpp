@@ -76,7 +76,10 @@ void GameObject::render(RenderTarget* window)
 {
 	for (auto& renderable : m_renderableComponents)
 	{
-		renderable->render(window);
+		if(renderable->isVisible())
+		{
+			renderable->render(window);
+		}
 	}
 
 	for (auto& child : m_children)

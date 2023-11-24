@@ -13,6 +13,8 @@ public:
 	LineComponent(GameObject* owner);
 
 	void addLineSegment(const LineSegment& lineSegment);
+	void updateLineSegment(unsigned int index, const Vec2f& startPoint, const Vec2f& endPoint);
+	void updateLineSegment(unsigned int index, const LineSegment& segment);
 	void clear();
 
 	void setColour(const Colour& colour);

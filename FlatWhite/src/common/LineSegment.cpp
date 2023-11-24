@@ -12,6 +12,17 @@ LineSegment::LineSegment(const Vec2f& startPoint, const Vec2f& endPoint)
 {
 }
 
+void LineSegment::resetStartPoint(const Vec2f& point)
+{
+	m_startPoint = point;
+}
+
+void LineSegment::resetEndPoint(const Vec2f& point)
+{
+	m_endPoint = point;
+}
+
+
 Vec2f LineSegment::getStartPoint() const
 {
 	return m_startPoint;

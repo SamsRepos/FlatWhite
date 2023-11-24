@@ -5,13 +5,18 @@
 namespace fw
 {
 
-	class RenderableComponent : public Component
-	{
-	public:
-		RenderableComponent(GameObject* owner);
+class RenderableComponent : public Component
+{
+public:
+	RenderableComponent(GameObject* owner);
 
-		virtual void render(RenderTarget* window) = 0;
-	private:
-	};
+	void setVisible();
+	void setInvisible();
+	bool isVisible();
+
+	virtual void render(RenderTarget* window) = 0;
+private:
+	bool m_visible;
+};
 
 }

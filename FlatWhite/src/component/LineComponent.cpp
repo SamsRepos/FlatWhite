@@ -15,6 +15,19 @@ void LineComponent::addLineSegment(const LineSegment& lineSegment)
 	m_lineSegments.push_back(lineSegment);
 }
 
+void LineComponent::updateLineSegment(unsigned int index, const Vec2f& startPoint, const Vec2f& endPoint)
+{
+	if(index >= m_lineSegments.size()) addLineSegment(LineSegment(startPoint, endPoint));
+
+	m_lineSegments[index].resetStartPoint(startPoint);
+	m_lineSegments[index].resetEndPoint(endPoint);
+}
+
+void LineComponent::updateLineSegment(unsigned int index, const LineSegment& segment)
+{
+	updateLineSegment(index, segment.getStartPoint(), segment.getEndPoint());
+}
+
 void LineComponent::clear()
 {
 	m_lineSegments.clear();
