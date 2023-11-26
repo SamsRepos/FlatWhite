@@ -90,4 +90,14 @@ bool Vec2f::isZero() const
 	return (fabsf(x) < FLT_EPSILON) && (fabsf(y) < FLT_EPSILON);
 }
 
+Vec2f Vec2f::displacementTo(const Vec2f& other) const
+{
+	return other - (*this);
+}
+
+Vec2f Vec2f::displacementFrom(const Vec2f& other) const
+{
+	return (*this) - other;
+}
+
 }

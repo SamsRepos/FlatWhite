@@ -25,11 +25,14 @@ public:
 
 	bool isZero() const;
 
-	inline static Vec2f zero() { return Vec2f(0.f); };
-	inline static Vec2f unitLeft() { return Vec2f(-1.f, 0.f); };
-	inline static Vec2f unitRight() { return Vec2f(1.f, 0.f); };
-	inline static Vec2f unitUp() { return Vec2f(0.f, -1.f); };
-	inline static Vec2f unitDown() { return Vec2f(0.f, 1.f); };
+	Vec2f displacementTo(const Vec2f& other) const;
+	Vec2f displacementFrom(const Vec2f& other) const;
+
+	inline static Vec2f zero()      { return Vec2f(0.f); };
+	inline static Vec2f unitLeft()  { return Vec2f(-1.f, 0.f); };
+	inline static Vec2f unitRight() { return Vec2f(1.f,  0.f); };
+	inline static Vec2f unitUp()    { return Vec2f(0.f,  -1.f); };
+	inline static Vec2f unitDown()  { return Vec2f(0.f,  1.f); };
 };
 
 }
