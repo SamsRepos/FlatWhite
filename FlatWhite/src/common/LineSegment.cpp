@@ -36,7 +36,7 @@ Vec2f LineSegment::getEndPoint() const
 }
 
 
-Vec2f LineSegment::getShortestDirectionToPoint(const Vec2f& point) const
+Vec2f LineSegment::getShortestDisplacementToPoint(const Vec2f& point) const
 {
 	const Vec2f& A = m_startPoint;
 	const Vec2f& B = m_endPoint;
@@ -51,6 +51,11 @@ Vec2f LineSegment::getShortestDirectionToPoint(const Vec2f& point) const
 	Vec2f dist     = AE - AS;
 	return dist;
 
+}
+
+Vec2f LineSegment::getStartToEndDisplacement() const
+{
+	return m_startPoint.displacementTo(m_endPoint);
 }
 
 }

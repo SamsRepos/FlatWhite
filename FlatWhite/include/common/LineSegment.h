@@ -15,7 +15,8 @@ public:
 
 	Vec2f getStartPoint() const;
 	Vec2f getEndPoint() const;
-	Vec2f getShortestDirectionToPoint(const Vec2f& point) const;
+	Vec2f getShortestDisplacementToPoint(const Vec2f& point) const;
+	Vec2f getStartToEndDisplacement() const;
 
 private:
 	Vec2f m_startPoint;
