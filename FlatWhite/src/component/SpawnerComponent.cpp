@@ -1,4 +1,4 @@
-//#include "component/compoSpawnerComponent.h"
+//#include "component/compoSpawnerComponent.hpp"
 //
-//#include "common/Util.h"
+//#include "common/Util.hpp"
 //

@@ -1,6 +1,6 @@
-#include "gameObject/GameObject.h"
+#include "gameObject/GameObject.hpp"
 
-#include "common/Util.h"
+#include "common/Util.hpp"
 
 namespace fw
 {

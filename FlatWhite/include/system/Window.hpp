@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "Input.h"
+#include "Input.hpp"
 
 namespace fw
 {

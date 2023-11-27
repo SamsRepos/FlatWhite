@@ -2,7 +2,7 @@
 
 #include <SFML/Window/Event.hpp>
 
-#include "common/Vec2f.h"
+#include "common/Vec2f.hpp"
 
 namespace fw
 {

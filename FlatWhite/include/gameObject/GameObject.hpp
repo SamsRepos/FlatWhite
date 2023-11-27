@@ -3,7 +3,7 @@
 #include <list>
 #include <memory>
 
-#include "component/RenderableComponent.h"
+#include "component/RenderableComponent.hpp"
 
 namespace fw
 {

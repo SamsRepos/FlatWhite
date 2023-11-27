@@ -1,11 +1,11 @@
 #pragma once
 
-#include "space/Space.h"
+#include "space/Space.hpp"
 
-#include "common/Vec2f.h"
-#include "system/Physics.h"
-#include "common/Rectangle.h"
-#include "common/LineSegment.h"
+#include "common/Vec2f.hpp"
+#include "system/Physics.hpp"
+#include "common/Rectangle.hpp"
+#include "common/LineSegment.hpp"
 
 namespace fw
 {

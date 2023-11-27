@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "gameObject/GameObject.h"
-#include "system/Input.h"
+#include "gameObject/GameObject.hpp"
+#include "system/Input.hpp"
 
 #include <list>
 

@@ -1,4 +1,4 @@
-#include "system/Window.h"
+#include "system/Window.hpp"
 
 namespace fw
 {

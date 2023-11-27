@@ -1,4 +1,4 @@
-#include "component/LineComponent.h"
+#include "component/LineComponent.hpp"
 
 namespace fw
 {

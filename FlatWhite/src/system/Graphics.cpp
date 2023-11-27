@@ -1,6 +1,6 @@
-#include "system/Graphics.h"
+#include "system/Graphics.hpp"
 
-#include "common/Util.h"
+#include "common/Util.hpp"
 
 namespace fw
 {

@@ -1,4 +1,4 @@
-#include "system/SoundBufferManager.h"
+#include "system/SoundBufferManager.hpp"
 
 namespace fw
 {

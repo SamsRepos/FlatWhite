@@ -1,6 +1,6 @@
-#include "common/LineSegment.h"
+#include "common/LineSegment.hpp"
 
-#include "common/Util.h"
+#include "common/Util.hpp"
 
 namespace fw
 {

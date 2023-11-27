@@ -1,10 +1,10 @@
-#include "component/BodyComponent.h"
+#include "component/BodyComponent.hpp"
 
 #include <cassert>
 
-#include "gameObject/GameObject.h"
-#include "common/Util.h"
-#include "space/PhysicsSpace.h"
+#include "gameObject/GameObject.hpp"
+#include "common/Util.hpp"
+#include "space/PhysicsSpace.hpp"
 
 namespace fw
 {

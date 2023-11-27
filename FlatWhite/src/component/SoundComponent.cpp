@@ -1,4 +1,4 @@
-#include "component/SoundComponent.h"
+#include "component/SoundComponent.hpp"
 
 namespace fw
 {

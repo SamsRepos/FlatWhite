@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 
-#include "Graphics.h"
+#include "Graphics.hpp"
 
 namespace fw
 {

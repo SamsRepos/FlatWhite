@@ -2,7 +2,7 @@
 
 #include <map>
 
-#include "Sound.h"
+#include "Sound.hpp"
 
 namespace fw
 {

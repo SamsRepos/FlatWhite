@@ -1,6 +1,6 @@
-#include "space/Space.h"
+#include "space/Space.hpp"
 
-#include "common/Util.h"
+#include "common/Util.hpp"
 
 namespace fw
 {

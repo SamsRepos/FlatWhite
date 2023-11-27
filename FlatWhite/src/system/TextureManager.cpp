@@ -1,4 +1,4 @@
-#include "system/TextureManager.h"
+#include "system/TextureManager.hpp"
 
 namespace fw
 {

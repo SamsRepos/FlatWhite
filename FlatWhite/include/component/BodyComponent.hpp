@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Component.h"
+#include "Component.hpp"
 
-#include "system/Physics.h"
+#include "system/Physics.hpp"
 
 namespace fw {
 

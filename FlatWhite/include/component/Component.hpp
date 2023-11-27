@@ -1,8 +1,8 @@
 #pragma once
 
-#include "common/Vec2f.h"
-#include "system/Graphics.h"
-#include "system/Input.h"
+#include "common/Vec2f.hpp"
+#include "system/Graphics.hpp"
+#include "system/Input.hpp"
 
 namespace fw
 {

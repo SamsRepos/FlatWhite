@@ -1,7 +1,7 @@
-#include "space/PhysicsSpace.h"
+#include "space/PhysicsSpace.hpp"
 
-#include "gameObject/GameObject.h"
-#include "common/Util.h"
+#include "gameObject/GameObject.hpp"
+#include "common/Util.hpp"
 
 namespace fw
 {

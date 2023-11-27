@@ -1,6 +1,6 @@
-#include "component/ParticleSystemComponent.h"
+#include "component/ParticleSystemComponent.hpp"
 
-#include "common/Util.h"
+#include "common/Util.hpp"
 
 namespace fw
 {

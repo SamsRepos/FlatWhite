@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RenderableComponent.h"
+#include "RenderableComponent.hpp"
 
 #include <list>
 
-#include "common/Util.h"
+#include "common/Util.hpp"
 
 namespace fw
 {

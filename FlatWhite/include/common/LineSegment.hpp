@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vec2f.h"
+#include "Vec2f.hpp"
 
 namespace fw
 {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "component/Component.h"
+#include "component/Component.hpp"
 
-#include "system/Sound.h"
+#include "system/Sound.hpp"
 
 namespace fw {
 

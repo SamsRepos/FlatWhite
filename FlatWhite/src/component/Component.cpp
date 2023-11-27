@@ -1,4 +1,4 @@
-#include "component/Component.h"
+#include "component/Component.hpp"
 
 namespace fw
 {

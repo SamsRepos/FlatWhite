@@ -143,31 +143,31 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\common\LineSegment.h" />
-    <ClInclude Include="..\include\common\Rectangle.h" />
-    <ClInclude Include="..\include\common\Util.h" />
-    <ClInclude Include="..\include\common\Vec2f.h" />
-    <ClInclude Include="..\include\component\BodyComponent.h" />
-    <ClInclude Include="..\include\component\Component.h" />
-    <ClInclude Include="..\include\component\GaugeComponent.h" />
-    <ClInclude Include="..\include\component\LineComponent.h" />
-    <ClInclude Include="..\include\component\ParticleSystemComponent.h" />
-    <ClInclude Include="..\include\component\RenderableComponent.h" />
-    <ClInclude Include="..\include\component\SoundComponent.h" />
-    <ClInclude Include="..\include\component\SpawnerComponent.h" />
-    <ClInclude Include="..\include\component\SpriteComponent.h" />
-    <ClInclude Include="..\include\FlatWhite.h" />
-    <ClInclude Include="..\include\gameObject\GameObject.h" />
-    <ClInclude Include="..\include\space\PhysicsSpace.h" />
-    <ClInclude Include="..\include\space\Space.h" />
-    <ClInclude Include="..\include\system\DeltaClock.h" />
-    <ClInclude Include="..\include\system\Graphics.h" />
-    <ClInclude Include="..\include\system\Input.h" />
-    <ClInclude Include="..\include\system\Physics.h" />
-    <ClInclude Include="..\include\system\Sound.h" />
-    <ClInclude Include="..\include\system\SoundBufferManager.h" />
-    <ClInclude Include="..\include\system\TextureManager.h" />
-    <ClInclude Include="..\include\system\Window.h" />
+    <ClInclude Include="..\include\common\LineSegment.hpp" />
+    <ClInclude Include="..\include\common\Rectangle.hpp" />
+    <ClInclude Include="..\include\common\Util.hpp" />
+    <ClInclude Include="..\include\common\Vec2f.hpp" />
+    <ClInclude Include="..\include\component\BodyComponent.hpp" />
+    <ClInclude Include="..\include\component\Component.hpp" />
+    <ClInclude Include="..\include\component\GaugeComponent.hpp" />
+    <ClInclude Include="..\include\component\LineComponent.hpp" />
+    <ClInclude Include="..\include\component\ParticleSystemComponent.hpp" />
+    <ClInclude Include="..\include\component\RenderableComponent.hpp" />
+    <ClInclude Include="..\include\component\SoundComponent.hpp" />
+    <ClInclude Include="..\include\component\SpawnerComponent.hpp" />
+    <ClInclude Include="..\include\component\SpriteComponent.hpp" />
+    <ClInclude Include="..\include\FlatWhite.hpp" />
+    <ClInclude Include="..\include\gameObject\GameObject.hpp" />
+    <ClInclude Include="..\include\space\PhysicsSpace.hpp" />
+    <ClInclude Include="..\include\space\Space.hpp" />
+    <ClInclude Include="..\include\system\DeltaClock.hpp" />
+    <ClInclude Include="..\include\system\Graphics.hpp" />
+    <ClInclude Include="..\include\system\Input.hpp" />
+    <ClInclude Include="..\include\system\Physics.hpp" />
+    <ClInclude Include="..\include\system\Sound.hpp" />
+    <ClInclude Include="..\include\system\SoundBufferManager.hpp" />
+    <ClInclude Include="..\include\system\TextureManager.hpp" />
+    <ClInclude Include="..\include\system\Window.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\common\LineSegment.cpp" />

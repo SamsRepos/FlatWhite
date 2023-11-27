@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RenderableComponent.h"
+#include "RenderableComponent.hpp"
 
 namespace fw
 {

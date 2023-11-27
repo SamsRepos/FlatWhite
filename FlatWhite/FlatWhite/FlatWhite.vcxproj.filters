@@ -45,79 +45,79 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\FlatWhite.h">
+    <ClInclude Include="..\include\FlatWhite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\system\Graphics.h">
+    <ClInclude Include="..\include\system\Graphics.hpp">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\system\Input.h">
+    <ClInclude Include="..\include\system\Input.hpp">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\system\Physics.h">
+    <ClInclude Include="..\include\system\Physics.hpp">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\space\Space.h">
+    <ClInclude Include="..\include\space\Space.hpp">
       <Filter>Header Files\space</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\space\PhysicsSpace.h">
+    <ClInclude Include="..\include\space\PhysicsSpace.hpp">
       <Filter>Header Files\space</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\gameObject\GameObject.h">
+    <ClInclude Include="..\include\gameObject\GameObject.hpp">
       <Filter>Header Files\gameObject</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\Component.h">
+    <ClInclude Include="..\include\component\Component.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\ParticleSystemComponent.h">
+    <ClInclude Include="..\include\component\ParticleSystemComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\RenderableComponent.h">
+    <ClInclude Include="..\include\component\RenderableComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\SpawnerComponent.h">
+    <ClInclude Include="..\include\component\SpawnerComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\SpriteComponent.h">
+    <ClInclude Include="..\include\component\SpriteComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\BodyComponent.h">
+    <ClInclude Include="..\include\component\BodyComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\common\Vec2f.h">
+    <ClInclude Include="..\include\common\Vec2f.hpp">
       <Filter>Header Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\common\Util.h">
+    <ClInclude Include="..\include\common\Util.hpp">
       <Filter>Header Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\system\TextureManager.h">
+    <ClInclude Include="..\include\system\TextureManager.hpp">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\GaugeComponent.h">
+    <ClInclude Include="..\include\component\GaugeComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\system\DeltaClock.h">
+    <ClInclude Include="..\include\system\DeltaClock.hpp">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\system\Window.h">
+    <ClInclude Include="..\include\system\Window.hpp">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\system\Sound.h">
+    <ClInclude Include="..\include\system\Sound.hpp">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\system\SoundBufferManager.h">
+    <ClInclude Include="..\include\system\SoundBufferManager.hpp">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\SoundComponent.h">
+    <ClInclude Include="..\include\component\SoundComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\common\Rectangle.h">
+    <ClInclude Include="..\include\common\Rectangle.hpp">
       <Filter>Header Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\common\LineSegment.h">
+    <ClInclude Include="..\include\common\LineSegment.hpp">
       <Filter>Header Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\component\LineComponent.h">
+    <ClInclude Include="..\include\component\LineComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
   </ItemGroup>

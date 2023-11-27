@@ -1,4 +1,4 @@
-#include "component/GaugeComponent.h"
+#include "component/GaugeComponent.hpp"
 
 #include <algorithm>
 

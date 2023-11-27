@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RenderableComponent.h"
+#include "RenderableComponent.hpp"
 
-#include "common/Rectangle.h"
+#include "common/Rectangle.hpp"
 
 namespace fw
 {

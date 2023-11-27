@@ -1,8 +1,8 @@
 #pragma once
 
-#include "component/RenderableComponent.h"
+#include "component/RenderableComponent.hpp"
 
-#include "common/LineSegment.h"
+#include "common/LineSegment.hpp"
 
 namespace fw
 {
