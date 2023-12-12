@@ -12,6 +12,7 @@
 #include "component/GaugeComponent.hpp"
 #include "component/SoundComponent.hpp"
 #include "component/LineComponent.hpp"
+#include "component/TextComponent.hpp"
 
 #include "common/Util.hpp"
 #include "common/Vec2f.hpp"

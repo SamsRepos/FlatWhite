@@ -107,17 +107,17 @@ std::list<std::shared_ptr<GameObject>> GameObject::lateUpdate()
 
 void GameObject::render(RenderTarget* window)
 {
-	for (auto& child : m_children)
-	{
-		child->render(window);
-	}
-
 	for (auto& renderable : m_renderableComponents)
 	{
 		if (renderable->isVisible())
 		{
 			renderable->render(window);
 		}
+	}
+
+	for (auto& child : m_children)
+	{
+		child->render(window);
 	}
 }
 

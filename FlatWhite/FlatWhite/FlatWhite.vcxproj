@@ -156,6 +156,7 @@
     <ClInclude Include="..\include\component\SoundComponent.hpp" />
     <ClInclude Include="..\include\component\SpawnerComponent.hpp" />
     <ClInclude Include="..\include\component\SpriteComponent.hpp" />
+    <ClInclude Include="..\include\component\TextComponent.hpp" />
     <ClInclude Include="..\include\FlatWhite.hpp" />
     <ClInclude Include="..\include\gameObject\GameObject.hpp" />
     <ClInclude Include="..\include\space\PhysicsSpace.hpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="..\src\component\SoundComponent.cpp" />
     <ClCompile Include="..\src\component\SpawnerComponent.cpp" />
     <ClCompile Include="..\src\component\SpriteComponent.cpp" />
+    <ClCompile Include="..\src\component\TextComponent.cpp" />
     <ClCompile Include="..\src\gameObject\GameObject.cpp" />
     <ClCompile Include="..\src\space\PhysicsSpace.cpp" />
     <ClCompile Include="..\src\space\Space.cpp" />
