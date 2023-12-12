@@ -23,7 +23,6 @@ public:
 	// per frame functions:
 	virtual void handleInput(const Input& input);
 	virtual void update(const float& deltaTime);
-	virtual std::list<std::shared_ptr<GameObject>> lateUpdate();
 	virtual void render(RenderTarget* window);
 
 	//
@@ -42,6 +41,9 @@ public:
 	inline bool moribundWhenParentIsMoribund() { return m_moribundWhenParentIsMoribund; };
 
 protected:
+	friend class Space;
+	virtual std::list<std::shared_ptr<GameObject>> lateUpdate();
+
 	inline std::list<std::shared_ptr<GameObject>>& getChildren() { return m_children; };
 	inline std::list<std::shared_ptr<Component>>& getComponents() { return m_components; };
 	inline std::list<std::shared_ptr<RenderableComponent>>& getRenderableComponents() { return m_renderableComponents; };
