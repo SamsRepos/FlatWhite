@@ -50,7 +50,11 @@ namespace fw
 	{
 		for (auto& object : m_gameObjects)
 		{
-			object->lateUpdate();
+			auto gameObjectRes = object->lateUpdate();
+			for (auto& gameObject : gameObjectRes)
+			{
+				m_gameObjects.push_back(gameObject);
+			}
 		}
 
 		util::removeMoribundGameObjects(m_gameObjects);

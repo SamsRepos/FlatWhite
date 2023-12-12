@@ -5,13 +5,85 @@
 namespace fw
 {
 
+//
+// Point source spawner:
+//
+
+PointParticleSourceArea::PointParticleSourceArea(const Vec2f& point)
+    :
+    m_point(point)
+{
+}
+
+void PointParticleSourceArea::updateSourcePoint(const Vec2f& point)
+{
+    m_point = point;
+}
+
+Vec2f PointParticleSourceArea::getSpawnPosition()
+{
+    return m_point;
+}
+
+//
+// Rectangle Source Area:
+// 
+
+RectangleParticleSourceArea::RectangleParticleSourceArea(const Rectangle& spawnArea)
+{
+    updateSourceArea(spawnArea);
+}
+
+void RectangleParticleSourceArea::updateSourceArea(const Rectangle& area)
+{
+    m_sourceMin = Vec2f(area.left, area.top);
+    m_sourceMax = m_sourceMin + Vec2f(area.width, area.height);
+}
+
+Vec2f RectangleParticleSourceArea::getSpawnPosition()
+{
+    float posX = util::lerp(m_sourceMin.x, m_sourceMax.x, util::randomFloat());
+    float posY = util::lerp(m_sourceMin.y, m_sourceMax.y, util::randomFloat());
+    return Vec2f(posX, posY);
+}
+
+
+//
+// Circle Source Area:
+// 
+
+CircleParticleSourceArea::CircleParticleSourceArea(const Vec2f& position, const float& radius)
+    :
+    m_position(position),
+    m_radius(radius)
+{
+}
+
+void CircleParticleSourceArea::updateSourcePosition(const Vec2f& position)
+{
+    m_position = position;
+}
+
+void CircleParticleSourceArea::updateSourceRadius(const float& radius)
+{
+    m_radius = radius;
+}
+
+Vec2f CircleParticleSourceArea::getSpawnPosition()
+{
+    return m_position + (util::randomUnitVec2f() * m_radius);
+}
+
+//
+// Particles System Component:
+// 
+
 ParticleSystemComponent::ParticleSystemComponent(
     GameObject* owner,
     float defaultTtl,
     Colour defaultTint,
     std::shared_ptr<Texture> texture,
-    Vec2f sourceMin, // top left corner
-    Vec2f sourceMax, // bottom right corner
+    std::shared_ptr<ParticleSourceArea> sourceArea,
     float particlesPerSecond,
     Vec2f minVelocity,
     Vec2f maxVelocity,
@@ -35,8 +107,7 @@ RenderableComponent(owner),
     m_defaultTtl(defaultTtl),
     m_defaultTint(defaultTint),
     m_texture(texture),
-    m_sourceMin(sourceMin), // top left corner,
-    m_sourceMax(sourceMax), // bottom right corner,
+    m_sourceArea(sourceArea),
     m_particlesPerSecond(particlesPerSecond),
     m_minVelocity(minVelocity),
     m_maxVelocity(maxVelocity),
@@ -72,7 +143,7 @@ void ParticleSystemComponent::update(const float& deltaTime)
 
         if (m_spawnTimer <= 0.f)
         {
-            emitParticles(1);
+            emitParticleAtPosition(m_sourceArea->getSpawnPosition());
             m_spawnTimer = m_timeBetweenParticles;
         };
     }
@@ -92,45 +163,16 @@ void ParticleSystemComponent::emitParticles(int number)
 {
     for (int i = 0; i < number; ++i)
     {
-        Particle particle;
-        particle.ttl = m_defaultTtl;
-        particle.texture = m_texture;
-        particle.tint = m_defaultTint;
-
-        particle.alpha = util::lerp(m_minAlpha, m_maxAlpha, util::randomFloat());
-        particle.alpha = util::clamp(0.f, particle.alpha, 1.f);
-        //particle.tint.a = util::lerp(0, 0xff, tintFloat);
-
-        float posX = util::lerp(m_sourceMin.x, m_sourceMax.x, util::randomFloat());
-        float posY = util::lerp(m_sourceMin.y, m_sourceMax.y, util::randomFloat());
-        particle.position = Vec2f(posX, posY);
-
-        float velX = util::lerp(m_minVelocity.x, m_maxVelocity.x, util::randomFloat());
-        float velY = util::lerp(m_minVelocity.y, m_maxVelocity.y, util::randomFloat());
-        particle.velocity = Vec2f(velX, velY);
-
-        float scaleX = util::lerp(m_minScale.x, m_maxScale.x, util::randomFloat());
-        float scaleY = util::lerp(m_minScale.y, m_maxScale.y, util::randomFloat());
-        particle.scale = Vec2f(scaleX, scaleY);
-
-        particle.rotation = util::lerp(m_minRotation, m_maxRotation, util::randomFloat());
-        particle.rotationSpeed = util::lerp(m_minRotationSpeed, m_maxRotationSpeed, util::randomFloat());
-
-        m_particles.push_back(particle);
+        emitParticleAtPosition(m_sourceArea->getSpawnPosition());
     }
 }
 
-void ParticleSystemComponent::emitParticles(int number, const Vec2f& sourcePoint)
+void ParticleSystemComponent::emitParticlesAtPosition(int number, const Vec2f& sourcePoint)
 {
-    m_sourceMin = m_sourceMax = sourcePoint;
-    emitParticles(number);
-}
-
-void ParticleSystemComponent::emitParticles(int number, const Vec2f& sourceMin, const Vec2f& sourceMax)
-{
-    m_sourceMin = sourceMin;
-    m_sourceMax = sourceMax;
-    emitParticles(number);
+    for (int i = 0; i < number; ++i)
+    {
+        emitParticleAtPosition(sourcePoint);
+    }
 }
 
 void ParticleSystemComponent::clear()
@@ -141,6 +183,32 @@ void ParticleSystemComponent::clear()
 //
 // PRIVATE:
 //
+
+void ParticleSystemComponent::emitParticleAtPosition(const Vec2f& position)
+{
+    Particle particle;
+    particle.ttl = m_defaultTtl;
+    particle.texture = m_texture;
+    particle.tint = m_defaultTint;
+
+    particle.alpha = util::lerp(m_minAlpha, m_maxAlpha, util::randomFloat());
+    particle.alpha = util::clamp(0.f, particle.alpha, 1.f);
+
+    particle.position = position;
+
+    float velX = util::lerp(m_minVelocity.x, m_maxVelocity.x, util::randomFloat());
+    float velY = util::lerp(m_minVelocity.y, m_maxVelocity.y, util::randomFloat());
+    particle.velocity = Vec2f(velX, velY);
+
+    float scaleX = util::lerp(m_minScale.x, m_maxScale.x, util::randomFloat());
+    float scaleY = util::lerp(m_minScale.y, m_maxScale.y, util::randomFloat());
+    particle.scale = Vec2f(scaleX, scaleY);
+
+    particle.rotation = util::lerp(m_minRotation, m_maxRotation, util::randomFloat());
+    particle.rotationSpeed = util::lerp(m_minRotationSpeed, m_maxRotationSpeed, util::randomFloat());
+
+    m_particles.push_back(particle);
+}
 
 void ParticleSystemComponent::updateParticles(const float& deltaTime)
 {

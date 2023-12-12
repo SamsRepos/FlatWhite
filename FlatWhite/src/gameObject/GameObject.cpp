@@ -57,19 +57,52 @@ void GameObject::update(const float& deltaTime)
 	}
 }
 
-void GameObject::lateUpdate()
+std::list<std::shared_ptr<GameObject>> GameObject::lateUpdate()
 {
+	std::list<std::shared_ptr<GameObject>> res;
+
 	for (auto& component : m_components)
 	{
 		component->lateUpdate();
 	}
 
+	std::list<std::shared_ptr<GameObject>> childrenRes;
 	for (auto& child : m_children)
 	{
-		child->lateUpdate();
+		if (m_moribund && child->moribundWhenParentIsMoribund())
+		{
+			child->setMoribund();
+		}
+
+		auto childRes = child->lateUpdate();
+		for (auto& gameObject : childRes)
+		{
+			childrenRes.push_back(gameObject);
+		}
+	}
+
+	if(m_moribund)
+	{
+		res = childrenRes;
+		for(auto& childObject : m_children)
+		{
+			if (!childObject->isMoribund())
+			{
+				res.push_back(childObject);
+			}
+		}
+	}
+	else
+	{
+		for(auto& gameObject : childrenRes)
+		{
+			m_children.push_back(gameObject);
+		}
 	}
 
 	util::removeMoribundGameObjects(m_children);
+
+	return res;
 }
 
 void GameObject::render(RenderTarget* window)

@@ -5,9 +5,57 @@
 #include <list>
 
 #include "common/Util.hpp"
+#include "common/Rectangle.hpp"
 
 namespace fw
 {
+class ParticleSourceArea
+{
+public:
+    virtual Vec2f getSpawnPosition() = 0;
+};
+
+class PointParticleSourceArea : public ParticleSourceArea
+{
+public:
+    PointParticleSourceArea(const Vec2f& point);
+
+    void updateSourcePoint(const Vec2f& point);
+
+    virtual Vec2f getSpawnPosition();
+private:
+    Vec2f m_point;
+};
+
+class RectangleParticleSourceArea : public ParticleSourceArea
+{
+public:
+    RectangleParticleSourceArea(const Rectangle& spawnArea);
+
+    void updateSourceArea(const Rectangle& area);
+
+    virtual Vec2f getSpawnPosition();
+private:
+    Vec2f m_sourceMin;
+    Vec2f m_sourceMax;
+};
+
+
+class CircleParticleSourceArea : public ParticleSourceArea
+{
+public:
+    CircleParticleSourceArea(const Vec2f& position, const float& radius);
+
+    void updateSourcePosition(const Vec2f& position);
+    void updateSourceRadius(const float& radius);
+
+    virtual Vec2f getSpawnPosition();
+private:
+    Vec2f m_position;
+    float m_radius;
+
+};
+
 
 class ParticleSystemComponent : public RenderableComponent
 {
@@ -17,8 +65,7 @@ public:
         float defaultTtl,
         Colour defaultTint,
         std::shared_ptr<Texture> texture,
-        Vec2f sourceMin, // top left corner
-        Vec2f sourceMax, // bottom right corner
+        std::shared_ptr<ParticleSourceArea> sourceArea,
         float particlesPerSecond = 10.f,
         Vec2f minVelocity = Vec2f(-1.f, -1.f),
         Vec2f maxVelocity = Vec2f(1.f, 1.f),
@@ -43,12 +90,13 @@ public:
     virtual void render(RenderTarget* window);
 
     void emitParticles(int number);
-    void emitParticles(int number, const Vec2f& sourcePoint);
-    void emitParticles(int number, const Vec2f& sourceMin, const Vec2f& sourceMax);
+    void emitParticlesAtPosition(int number, const Vec2f& sourcePoint);
 
     void clear();
 
 private:
+    void emitParticleAtPosition(const Vec2f& position);
+
     void updateParticles(const float& deltaTime);
 
     struct Particle
@@ -74,8 +122,7 @@ private:
     float m_defaultTtl;
     Colour m_defaultTint;
     std::shared_ptr<Texture> m_texture;
-    Vec2f m_sourceMin; // top left corne
-    Vec2f m_sourceMax; // bottom right corne
+    std::shared_ptr<ParticleSourceArea> m_sourceArea;
     Vec2f m_minVelocity;
     Vec2f m_maxVelocity;
     Vec2f m_minScale;
