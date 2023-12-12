@@ -1,10 +1,26 @@
 #include "component/ParticleSystemComponent.hpp"
 
 #include "common/Util.hpp"
+#include "common/Vec2f.hpp"
 
 namespace fw
 {
 
+const float DEFAULT_MAX_SPEED            = 1.f;
+const float DEFAULT_ALPHA_CHANGE         = -0.01f; // 0.f <= alpha <= 1.f
+const Vec2f DEFAULT_MIN_SCALE            = Vec2f(1.f);
+const Vec2f DEFAULT_MAX_SCALE            = Vec2f(1.f);
+const float DEFAULT_MIN_ROTATION         = -(util::PI);
+const float DEFAULT_MAX_ROTATION         = util::PI;
+const float DEFAULT_MIN_ROTATION_SPEED   = -1.f;
+const float DEFAULT_MAX_ROTATION_SPEED   = 1.f;
+const float DEFAULT_MIN_ALPHA            = 1.f; // 0.f <= alpha <= 1.f
+const float DEFAULT_MAX_ALPHA            = 1.f; // 0.f <= alpha <= 1.f
+const Vec2f DEFAULT_ACCELERATION         = Vec2f::zero();
+const Vec2f DEFAULT_GROWTH_LINEAR        = Vec2f::zero();
+const Vec2f DEFAULT_GROWTH_EXPONENTIAL   = Vec2f::zero();
+const float DEFAULT_ROTATION_SLOWDOWN    = 0.0001f;
+const float DEFAULT_VELOCITY_SLOWDOWN    = 0.0001f;
 //
 // Point source spawner:
 //
@@ -74,6 +90,7 @@ Vec2f CircleParticleSourceArea::getSpawnPosition()
     return m_position + (util::randomUnitVec2f() * m_radius);
 }
 
+
 //
 // Particles System Component:
 // 
@@ -84,23 +101,7 @@ ParticleSystemComponent::ParticleSystemComponent(
     Colour defaultTint,
     std::shared_ptr<Texture> texture,
     std::shared_ptr<ParticleSourceArea> sourceArea,
-    float particlesPerSecond,
-    Vec2f minVelocity,
-    Vec2f maxVelocity,
-    float alphaChange,
-    Vec2f minScale,
-    Vec2f maxScale,
-    float minRotation,
-    float maxRotation,
-    float minRotationSpeed,
-    float maxRotationSpeed,
-    float minAlpha,
-    float maxAlpha,
-    Vec2f acceleration,
-    Vec2f growthLinear,
-    Vec2f growthExponential,
-    float rotationSlowDown,
-    float velocitySlowDown
+    float particlesPerSecond
 )
     :
 RenderableComponent(owner),
@@ -109,22 +110,28 @@ RenderableComponent(owner),
     m_texture(texture),
     m_sourceArea(sourceArea),
     m_particlesPerSecond(particlesPerSecond),
-    m_minVelocity(minVelocity),
-    m_maxVelocity(maxVelocity),
-    m_alphaChange(alphaChange),
-    m_maxScale(maxScale),
-    m_minRotation(minRotation),
-    m_maxRotation(maxRotation),
-    m_minRotationSpeed(minRotationSpeed),
-    m_maxRotationSpeed(maxRotationSpeed),
-    m_minAlpha(minAlpha),
-    m_maxAlpha(maxAlpha),
-    m_acceleration(acceleration),
-    m_growthLinear(growthLinear),
-    m_growthExponential(growthExponential),
-    m_rotationSlowDown(rotationSlowDown),
-    m_velocitySlowDown(velocitySlowDown)
+    m_maxSpeed(DEFAULT_MAX_SPEED),
+    m_alphaChange(DEFAULT_ALPHA_CHANGE),
+    m_maxScale(DEFAULT_MAX_SCALE),
+    m_minRotation(DEFAULT_MIN_ROTATION),
+    m_maxRotation(DEFAULT_MAX_ROTATION),
+    m_minRotationSpeed(DEFAULT_MIN_ROTATION_SPEED),
+    m_maxRotationSpeed(DEFAULT_MAX_ROTATION_SPEED),
+    m_minAlpha(DEFAULT_MIN_ALPHA),
+    m_maxAlpha(DEFAULT_MAX_ALPHA),
+    m_acceleration(DEFAULT_ACCELERATION),
+    m_growthLinear(DEFAULT_GROWTH_LINEAR),
+    m_growthExponential(DEFAULT_GROWTH_EXPONENTIAL),
+    m_rotationSlowDown(DEFAULT_ROTATION_SLOWDOWN),
+    m_velocitySlowDown(DEFAULT_VELOCITY_SLOWDOWN)
 {
+    setParticlesPerSecond(particlesPerSecond);
+}
+
+void ParticleSystemComponent::setParticlesPerSecond(const float& particlesPerSecond)
+{
+    m_particlesPerSecond = particlesPerSecond;
+
     if (m_particlesPerSecond > FLT_EPSILON)
     {
         m_timeBetweenParticles = 1.f / m_particlesPerSecond;
@@ -196,16 +203,17 @@ void ParticleSystemComponent::emitParticleAtPosition(const Vec2f& position)
 
     particle.position = position;
 
-    float velX = util::lerp(m_minVelocity.x, m_maxVelocity.x, util::randomFloat());
-    float velY = util::lerp(m_minVelocity.y, m_maxVelocity.y, util::randomFloat());
-    particle.velocity = Vec2f(velX, velY);
+    float speed       = util::lerp(0.f, m_maxSpeed, util::randomFloat());
+    particle.velocity = Vec2f(fw::util::randomUnitVec2f() * speed);
 
-    float scaleX = util::lerp(m_minScale.x, m_maxScale.x, util::randomFloat());
-    float scaleY = util::lerp(m_minScale.y, m_maxScale.y, util::randomFloat());
+    float scaleX   = util::lerp(m_minScale.x, m_maxScale.x, util::randomFloat());
+    float scaleY   = util::lerp(m_minScale.y, m_maxScale.y, util::randomFloat());
     particle.scale = Vec2f(scaleX, scaleY);
 
-    particle.rotation = util::lerp(m_minRotation, m_maxRotation, util::randomFloat());
+    particle.rotation      = util::lerp(m_minRotation, m_maxRotation, util::randomFloat());
     particle.rotationSpeed = util::lerp(m_minRotationSpeed, m_maxRotationSpeed, util::randomFloat());
+    // rotation speed should be 50/50 as to whether it's clockwise/counter-clockwise 
+    if(rand() % 2 == 0) particle.rotationSpeed *= -1.f;
 
     m_particles.push_back(particle);
 }
@@ -227,11 +235,11 @@ void ParticleSystemComponent::updateParticles(const float& deltaTime)
             particle.velocity *= (1.f - (m_velocitySlowDown * deltaTime));
             particle.velocity += m_acceleration * deltaTime;
             particle.position += particle.velocity * deltaTime;
-            particle.scale += m_growthLinear * deltaTime;
+            particle.scale    += m_growthLinear * deltaTime;
 
-            particle.scale.x *= m_growthExponential.x * deltaTime;
-            particle.scale.y *= m_growthExponential.y * deltaTime;
-
+            particle.scale.x *= 1 + (m_growthExponential.x * deltaTime);
+            particle.scale.y *= 1 + (m_growthExponential.y * deltaTime);
+            
             particle.rotationSpeed -= m_rotationSlowDown * deltaTime;
             particle.rotation += particle.rotationSpeed * deltaTime;
 
@@ -262,12 +270,12 @@ void ParticleSystemComponent::Particle::render(RenderTarget* window)
 {
     shape.setPosition(position);
     shape.setTexture(texture.get());
-    shape.setScale(scale);
-    shape.setScale(Vec2f(1, 1));
+    //shape.setScale(scale);
     Vec2f size = Vec2f(
-        texture->getSize().x,
-        texture->getSize().y
+        texture->getSize().x * scale.x,
+        texture->getSize().y * scale.y
     );
+    shape.setOrigin(size / 2.f);
     shape.setSize(size);
     shape.setRotation(rotation);
     shape.setFillColor(tint);

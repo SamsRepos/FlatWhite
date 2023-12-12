@@ -3,7 +3,8 @@
 #include <SFML/System/Vector2.hpp>
 #include <box2d/box2d.h>
 
-namespace fw {
+namespace fw 
+{
 
 class Vec2f : public sf::Vector2f
 {
