@@ -51,6 +51,10 @@ void LineComponent::setSegmentGradient(unsigned int index, const fw::Colour& col
 	m_segmentColours[index][1] = colour1;
 }
 
+//
+// PROTECTED:
+//
+
 void LineComponent::update(const float& deltaTime)
 {
 

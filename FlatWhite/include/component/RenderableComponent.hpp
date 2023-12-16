@@ -14,7 +14,11 @@ public:
 	void setInvisible();
 	bool isVisible();
 
+protected:
+	// per frame update, callable by GameObjects:
+	friend class GameObject;
 	virtual void render(RenderTarget* window) = 0;
+
 private:
 	bool m_visible;
 };

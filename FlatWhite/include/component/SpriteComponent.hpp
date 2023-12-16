@@ -14,9 +14,6 @@ namespace fw
 			std::shared_ptr<Texture> texture
 		);
 
-		virtual void update(const float& deltaTime);
-		virtual void render(RenderTarget* window);
-
 		void setSize(const Vec2f& size);
 		Vec2f getSize() const;
 
@@ -37,6 +34,9 @@ namespace fw
 
 		void setTexture(std::shared_ptr<Texture> texture);
 		const std::shared_ptr<Texture>& getTexture() const;
+	protected:
+		virtual void update(const float& deltaTime);
+		virtual void render(RenderTarget* window);
 
 	private:
 		std::shared_ptr<Texture> m_texture;

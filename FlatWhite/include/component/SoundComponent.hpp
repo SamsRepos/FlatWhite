@@ -16,9 +16,10 @@ public:
 	void createAndAddSoundInstance(const std::string& name, std::shared_ptr<SoundBuffer> soundBuffer);
 	void addSoundInstance(const std::string& name, const SoundInstance& soundInstaance);
 
-	virtual void update(const float& deltaTime);
-
 	void playSound(const std::string& name);
+
+protected:
+	virtual void update(const float& deltaTime);
 
 private:
 	std::map<std::string, SoundInstance> m_soundInstances;

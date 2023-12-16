@@ -142,30 +142,6 @@ void ParticleSystemComponent::setParticlesPerSecond(const float& particlesPerSec
     }
 }
 
-void ParticleSystemComponent::update(const float& deltaTime)
-{
-    if (m_particlesPerSecond > FLT_EPSILON)
-    {
-        m_spawnTimer -= deltaTime;
-
-        if (m_spawnTimer <= 0.f)
-        {
-            emitParticleAtPosition(m_sourceArea->getSpawnPosition());
-            m_spawnTimer = m_timeBetweenParticles;
-        };
-    }
-    
-    updateParticles(deltaTime);
-}
-
-void ParticleSystemComponent::render(RenderTarget* window)
-{
-    for (auto& particle : m_particles)
-    {
-        particle.render(window);
-    }
-}
-
 void ParticleSystemComponent::emitParticles(int number)
 {
     for (int i = 0; i < number; ++i)
@@ -186,6 +162,35 @@ void ParticleSystemComponent::clear()
 {
     m_particles.clear();
 }
+
+//
+// PROTECTED:
+//
+
+void ParticleSystemComponent::update(const float& deltaTime)
+{
+    if (m_particlesPerSecond > FLT_EPSILON)
+    {
+        m_spawnTimer -= deltaTime;
+
+        if (m_spawnTimer <= 0.f)
+        {
+            emitParticleAtPosition(m_sourceArea->getSpawnPosition());
+            m_spawnTimer = m_timeBetweenParticles;
+        };
+    }
+
+    updateParticles(deltaTime);
+}
+
+void ParticleSystemComponent::render(RenderTarget* window)
+{
+    for (auto& particle : m_particles)
+    {
+        particle.render(window);
+    }
+}
+
 
 //
 // PRIVATE:

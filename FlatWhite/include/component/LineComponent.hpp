@@ -21,6 +21,7 @@ public:
 	void setSegmentColour(unsigned int index, const fw::Colour& colour);
 	void setSegmentGradient(unsigned int index, const fw::Colour& colour0, const fw::Colour& colour1);
 
+protected:
 	virtual void update(const float& deltaTime);
 	virtual void render(RenderTarget* window);
 

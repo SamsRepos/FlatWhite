@@ -26,10 +26,11 @@ public:
 
 	void updatePosition(const Vec2f& position);
 	void updateHealth(const float& health); // 0.f <= health <= 1.f
+	
+protected:
 	virtual void update(const float& deltaTime);
 	virtual void render(RenderTarget* window);
-
-protected:
+	
 	RectangleShape m_outerRect;
 	RectangleShape m_innerRect;
 

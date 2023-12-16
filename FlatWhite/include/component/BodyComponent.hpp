@@ -29,9 +29,6 @@ public:
 		BodyType type = b2_dynamicBody
 	);
 
-	virtual void update(const float& deltaTime);
-	virtual void lateUpdate();
-
 	void setLinearVelocity(const Vec2f& velocity);
 	const Vec2f& getLinearVelocity() const;
 	void setAngularVelocity(float velocity);
@@ -51,6 +48,9 @@ public:
 	bool containsPointPixels(const Vec2f& pointInPixels) const;
 
 protected:
+	virtual void update(const float& deltaTime);
+	virtual void lateUpdate();
+
 	inline Body* getBody() { return m_body; };
 
 	float pixelsToMetres(int pixels) const;

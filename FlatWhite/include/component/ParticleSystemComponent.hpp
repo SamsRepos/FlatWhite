@@ -72,9 +72,6 @@ public:
 
     void setParticlesPerSecond(const float& particlesPerSecond);
 
-    virtual void update(const float& deltaTime);
-    virtual void render(RenderTarget* window);
-
     void emitParticles(int number);
     void emitParticlesAtPosition(int number, const Vec2f& sourcePoint);
 
@@ -97,6 +94,9 @@ public:
     float m_rotationSlowDown;
     float m_velocitySlowDown;
     float m_alphaChange;
+protected:
+    virtual void update(const float& deltaTime);
+    virtual void render(RenderTarget* window);
 
 private:
     void emitParticleAtPosition(const Vec2f& position);

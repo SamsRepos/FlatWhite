@@ -7,21 +7,23 @@
 namespace fw
 {
 
-	class GameObject;
+class GameObject;
 
-	class Component
-	{
-	public:
-		Component(GameObject* owner);
+class Component
+{
+public:
+	Component(GameObject* owner);
 
-		virtual void update(const float& deltaTime) = 0;
-		virtual void lateUpdate() { };
+protected:
+	// per frame functions, called by Space:
+	friend class GameObject;
+	virtual void update(const float& deltaTime) = 0;
+	virtual void lateUpdate() { };
 
-	protected:
-		inline GameObject* getOwner() const { return m_owner; };
+	inline GameObject* getOwner() const { return m_owner; };
 
-	private:
-		GameObject* m_owner;
-	};
+private:
+	GameObject* m_owner;
+};
 
 }

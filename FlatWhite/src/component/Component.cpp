@@ -3,11 +3,11 @@
 namespace fw
 {
 
-	Component::Component(GameObject* owner)
-		:
-		m_owner(owner)
-	{
+Component::Component(GameObject* owner)
+	:
+	m_owner(owner)
+{
 
-	}
+}
 
 }

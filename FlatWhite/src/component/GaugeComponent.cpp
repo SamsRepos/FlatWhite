@@ -67,6 +67,10 @@ void GaugeComponent::updateHealth(const float& health)
 	}
 }
 
+//
+// PROTECTED:
+//
+
 void GaugeComponent::update(const float& deltaTime)
 {
 

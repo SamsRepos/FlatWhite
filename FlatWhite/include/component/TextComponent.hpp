@@ -23,6 +23,7 @@ public:
 	inline void setPosition(const Vec2f& position);
 	inline void setCharacterSize(const unsigned int& size) { m_text.setCharacterSize(size); };
 
+protected:
 	virtual void update(const float& deltaTime) { };
 	virtual void render(RenderTarget* window);
 

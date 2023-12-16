@@ -27,11 +27,6 @@ void SoundComponent::addSoundInstance(
 	m_soundInstances[name] = soundInstaance;
 }
 
-void SoundComponent::update(const float& deltaTime)
-{
-
-}
-
 void SoundComponent::playSound(const std::string& name)
 {
 	if (m_soundInstances.find(name) == m_soundInstances.end())
@@ -44,4 +39,15 @@ void SoundComponent::playSound(const std::string& name)
 	}
 }
 
+//
+// PROTECTED:
+//
+
+void SoundComponent::update(const float& deltaTime)
+{
+
 }
+
+}
+
+

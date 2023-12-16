@@ -36,6 +36,10 @@ void TextComponent::setPosition(const Vec2f& position)
 	m_text.setPosition(position);
 }
 
+//
+// PROTECTED:
+//
+
 void TextComponent::render(RenderTarget* window)
 {
 	window->draw(m_text);

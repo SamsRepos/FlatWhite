@@ -79,26 +79,6 @@ namespace fw
 		}
 	}
 
-	void BodyComponent::update(const float& deltaTime)
-	{
-		auto* owner = getOwner();
-
-		owner->setRotation(m_body->GetAngle());
-
-		Vec2f positionInMetres = m_body->GetPosition();
-		Vec2f positionInPixels = metresToPixels(positionInMetres);
-		owner->setPosition(positionInPixels);
-	}
-
-	void BodyComponent::lateUpdate()
-	{
-		if (getOwner()->isMoribund())
-		{
-			auto* world = m_body->GetWorld();
-			world->DestroyBody(m_body);
-		}
-	}
-
 	void BodyComponent::setLinearVelocity(const Vec2f& velocity)
 	{
 		m_body->SetLinearVelocity(velocity);
@@ -161,6 +141,26 @@ namespace fw
 	//
 	// PROTECTED:
 	// 
+
+	void BodyComponent::update(const float& deltaTime)
+	{
+		auto* owner = getOwner();
+
+		owner->setRotation(m_body->GetAngle());
+
+		Vec2f positionInMetres = m_body->GetPosition();
+		Vec2f positionInPixels = metresToPixels(positionInMetres);
+		owner->setPosition(positionInPixels);
+	}
+
+	void BodyComponent::lateUpdate()
+	{
+		if (getOwner()->isMoribund())
+		{
+			auto* world = m_body->GetWorld();
+			world->DestroyBody(m_body);
+		}
+	}
 
 	float BodyComponent::pixelsToMetres(int pixels) const
 	{
