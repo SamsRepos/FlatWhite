@@ -25,13 +25,9 @@ public:
 	//fw::LineSegment rayCast(const Vec2f& startPoint, const float& angle);
 
 protected:
-	//std::shared_ptr<World> getWorld() { return m_world; };
-	const Rectangle& getBounds();
 	int getPixelsPerMetre();
 	
 private:
-	//std::shared_ptr<World> m_world;
-	Rectangle m_bounds;
 	int m_pixelsPerMetre;
 };
 

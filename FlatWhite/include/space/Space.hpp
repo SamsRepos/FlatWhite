@@ -4,30 +4,33 @@
 
 #include "gameObject/GameObject.hpp"
 #include "system/Input.hpp"
+#include "common/Rectangle.hpp"
 
 #include <list>
 
 namespace fw
 {
 
-	class Space
-	{
-	public:
-		Space();
-		~Space();
+class Space
+{
+public:
+	Space(const Rectangle& bounds);
+	~Space();
 
-		void addGameObject(std::shared_ptr<GameObject> gameObject);
-		virtual void handleInput(const Input& input);
-		virtual void update(const float& deltaTime);
-		virtual void lateUpdate();
-		virtual void render(RenderTarget* window);
+	void addGameObject(std::shared_ptr<GameObject> gameObject);
+	virtual void handleInput(const Input& input);
+	virtual void update(const float& deltaTime);
+	virtual void lateUpdate();
+	virtual void render(RenderTarget* window);
 
-	protected:
-		inline const std::list<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; };
+protected:
+	inline const std::list<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; }; 
+	inline const Rectangle& getBounds() const { return m_bounds; };
 
-	private:
-		std::list<std::shared_ptr<GameObject>> m_gameObjects;
+private:
+	Rectangle m_bounds;
+	std::list<std::shared_ptr<GameObject>> m_gameObjects;
 
-	};
+};
 
 }

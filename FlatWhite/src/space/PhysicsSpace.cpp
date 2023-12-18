@@ -15,9 +15,8 @@ PhysicsSpace::PhysicsSpace(
 	int pixelsPerMetre, 
 	const Vec2f& gravity)
 	:
-	m_bounds(bounds),
 	m_pixelsPerMetre(pixelsPerMetre),
-	Space::Space(),
+	Space::Space(bounds),
 	b2World(gravity)
 {
 
@@ -93,11 +92,6 @@ void PhysicsSpace::update(const float& deltaTime)
 //
 //  PROTECTED:
 //
-
-const Rectangle& PhysicsSpace::getBounds()
-{
-	return m_bounds;
-}
 
 int PhysicsSpace::getPixelsPerMetre()
 {
