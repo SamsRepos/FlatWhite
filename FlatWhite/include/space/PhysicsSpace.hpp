@@ -19,16 +19,16 @@ public:
 		const Vec2f& gravity = Vec2f(0.f, 9.81f)
 	);
 
+protected:
 	virtual void update(const float& deltaTime);
 
-	//fw::LineSegment rayCast(const Vec2f& startPoint, Vec2f direction);
-	//fw::LineSegment rayCast(const Vec2f& startPoint, const float& angle);
-
-protected:
 	int getPixelsPerMetre();
 	
 private:
 	int m_pixelsPerMetre;
+
+	//fw::LineSegment rayCast(const Vec2f& startPoint, Vec2f direction);
+	//fw::LineSegment rayCast(const Vec2f& startPoint, const float& angle);
 };
 
 }

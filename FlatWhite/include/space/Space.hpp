@@ -18,14 +18,17 @@ public:
 	~Space();
 
 	void addGameObject(std::shared_ptr<GameObject> gameObject);
-	virtual void handleInput(const Input& input);
-	virtual void update(const float& deltaTime);
-	virtual void lateUpdate();
-	virtual void render(RenderTarget* window);
 
 	inline const std::list<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; }; 
 
 protected:
+	// per frame updates, called by Game:
+	friend class Game;
+	virtual void handleInput(const Input& input);
+	virtual void update(const float& deltaTime);
+	virtual void lateUpdate();
+	virtual void render(RenderTarget* window);
+	
 	inline const Rectangle& getBounds() const { return m_bounds; };
 
 private:

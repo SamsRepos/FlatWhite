@@ -6,10 +6,6 @@
 namespace fw
 {
 
-//
-// CONSTRUCTOR & PUBLIC:
-//
-
 PhysicsSpace::PhysicsSpace(
 	const Rectangle& bounds,
 	int pixelsPerMetre, 
@@ -22,6 +18,9 @@ PhysicsSpace::PhysicsSpace(
 
 }
 
+//
+// PROTECTED:
+//
 
 void PhysicsSpace::update(const float& deltaTime)
 {
@@ -64,6 +63,15 @@ void PhysicsSpace::update(const float& deltaTime)
 	}
 }
 
+int PhysicsSpace::getPixelsPerMetre()
+{
+	return m_pixelsPerMetre;
+}
+
+//
+// PRIVATE:
+//
+
 //fw::LineSegment PhysicsSpace::rayCast(
 //	const Vec2f& startPoint, 
 //	Vec2f direction
@@ -88,14 +96,5 @@ void PhysicsSpace::update(const float& deltaTime)
 //{
 //	return rayCast(startPoint, util::angleToDirection(angle));
 //}
-
-//
-//  PROTECTED:
-//
-
-int PhysicsSpace::getPixelsPerMetre()
-{
-	return m_pixelsPerMetre;
-}
 
 }

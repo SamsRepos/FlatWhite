@@ -40,11 +40,10 @@ public:
 protected:
 	// per frame functions, called by Space:
 	friend class Space;
-	virtual std::list<std::shared_ptr<GameObject>> lateUpdate();
 	virtual void handleInput(const Input& input);
 	virtual void update(const float& deltaTime);
-	////virtual void render(RenderTarget* window);
-	// called by PhysicsSpace
+	virtual std::list<std::shared_ptr<GameObject>> lateUpdate();
+	// called by PhysicsSpace:
 	friend class PhysicsSpace;
 	virtual void collisionResponse(GameObject* other);
 	

@@ -31,6 +31,10 @@ void Space::addGameObject(std::shared_ptr<GameObject> gameObject)
 }
 
 
+//
+// PROTECTED UPDATES:
+//
+
 void Space::handleInput(const Input& input)
 {
 	for (auto& object : m_gameObjects)

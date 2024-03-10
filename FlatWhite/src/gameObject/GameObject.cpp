@@ -32,8 +32,28 @@ void GameObject::addComponent(std::shared_ptr<Component> component)
 	}
 }
 
+std::list<std::shared_ptr<RenderableComponent>> GameObject::getRenderableComponentsDeep()
+{
+	std::list<std::shared_ptr<RenderableComponent>> res;
+
+	for (auto& child : m_children)
+	{
+		for (auto& renderable : child->getRenderableComponentsDeep())
+		{
+			res.push_back(renderable);
+		}
+	}
+
+	for (auto& renderable : this->getRenderableComponentsShallow())
+	{
+		res.push_back(renderable);
+	}
+
+	return res;
+}
+
 //
-// PUBLIC UPDATES:
+//  PROTECTED UPDATES:
 //
 
 void GameObject::handleInput(const Input& input)
@@ -81,10 +101,10 @@ std::list<std::shared_ptr<GameObject>> GameObject::lateUpdate()
 		}
 	}
 
-	if(m_moribund)
+	if (m_moribund)
 	{
 		res = childrenRes;
-		for(auto& childObject : m_children)
+		for (auto& childObject : m_children)
 		{
 			if (!childObject->isMoribund())
 			{
@@ -94,7 +114,7 @@ std::list<std::shared_ptr<GameObject>> GameObject::lateUpdate()
 	}
 	else
 	{
-		for(auto& gameObject : childrenRes)
+		for (auto& gameObject : childrenRes)
 		{
 			m_children.push_back(gameObject);
 		}
@@ -105,50 +125,8 @@ std::list<std::shared_ptr<GameObject>> GameObject::lateUpdate()
 	return res;
 }
 
-//void GameObject::render(RenderTarget* window)
-//{
-//	for (auto& renderable : m_renderableComponents)
-//	{
-//		if (renderable->isVisible())
-//		{
-//			renderable->render(window);
-//		}
-//	}
-//
-//	for (auto& child : m_children)
-//	{
-//		child->render(window);
-//	}
-//}
-
 void GameObject::collisionResponse(GameObject* other)
 {
-
 }
-
-std::list<std::shared_ptr<RenderableComponent>> GameObject::getRenderableComponentsDeep()
-{
-	std::list<std::shared_ptr<RenderableComponent>> res;
-
-	for (auto& child : m_children)
-	{
-		for (auto& renderable : child->getRenderableComponentsDeep())
-		{
-			res.push_back(renderable);
-		}
-	}
-
-	for (auto& renderable : this->getRenderableComponentsShallow())
-	{
-		res.push_back(renderable);
-	}
-
-	return res;
-}
-
-//
-//  PROTECTED:
-//
-
 
 }
