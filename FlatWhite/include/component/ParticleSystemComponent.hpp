@@ -67,7 +67,8 @@ public:
         Colour defaultTint,
         std::shared_ptr<Texture> texture,
         std::shared_ptr<ParticleSourceArea> sourceArea,
-        float particlesPerSecond = DEFAULT_PARTICLES_PER_SECOND
+        float particlesPerSecond = DEFAULT_PARTICLES_PER_SECOND,
+        float depth = 0.f
     );
 
     void setParticlesPerSecond(const float& particlesPerSecond);

@@ -10,7 +10,7 @@ namespace fw
 class LineComponent : public RenderableComponent
 {
 public:
-	LineComponent(GameObject* owner);
+	LineComponent(GameObject* owner, float depth = 0.f);
 
 	void addLineSegment(const LineSegment& lineSegment);
 	void updateLineSegment(unsigned int index, const Vec2f& startPoint, const Vec2f& endPoint);

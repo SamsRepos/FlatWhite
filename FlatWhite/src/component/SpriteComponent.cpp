@@ -9,10 +9,11 @@ namespace fw
 
 SpriteComponent::SpriteComponent(
 	GameObject* owner,
-	std::shared_ptr<Texture> texture
+	std::shared_ptr<Texture> texture,
+	float depth
 )
 	:
-	RenderableComponent(owner),
+	RenderableComponent(owner, depth),
 	m_texture(texture)
 {
 	m_rectangleShape.setTexture(m_texture.get());

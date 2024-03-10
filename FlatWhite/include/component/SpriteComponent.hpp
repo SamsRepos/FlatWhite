@@ -11,7 +11,8 @@ namespace fw
 	public:
 		SpriteComponent(
 			GameObject* owner,
-			std::shared_ptr<Texture> texture
+			std::shared_ptr<Texture> texture,
+			float depth = 0
 		);
 
 		void setSize(const Vec2f& size);

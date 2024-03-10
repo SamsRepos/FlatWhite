@@ -65,9 +65,27 @@ void Space::lateUpdate()
 
 void Space::render(RenderTarget* window)
 {
-	for (auto& object : m_gameObjects)
+	std::list<std::shared_ptr<RenderableComponent>> renderableBatch;
+
+	//
+	for (auto& gameObject : m_gameObjects)
 	{
-		object->render(window);
+		for (auto& renderable : gameObject->getRenderableComponentsDeep())
+		{
+			renderableBatch.push_back(renderable);
+		}
+	}
+
+	//
+
+	renderableBatch.sort(RenderableComponent::Comparator);
+
+	for (auto& renderable : renderableBatch)
+	{
+		if(renderable->isVisible())
+		{
+			renderable->render(window);
+		}
 	}
 }
 

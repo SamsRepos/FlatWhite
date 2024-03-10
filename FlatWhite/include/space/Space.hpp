@@ -23,8 +23,9 @@ public:
 	virtual void lateUpdate();
 	virtual void render(RenderTarget* window);
 
-protected:
 	inline const std::list<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; }; 
+
+protected:
 	inline const Rectangle& getBounds() const { return m_bounds; };
 
 private:

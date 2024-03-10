@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Header Files\system">
       <UniqueIdentifier>{6ba30b97-d9df-4894-9932-9a7cd4459937}</UniqueIdentifier>
     </Filter>
@@ -42,6 +38,12 @@
     </Filter>
     <Filter Include="Source Files\common">
       <UniqueIdentifier>{06b7eff1-cf66-4771-8191-ac82520dac12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game">
+      <UniqueIdentifier>{57a6107e-759d-4e4b-8d61-2a7f2b2faede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{c1bc3139-e8eb-4b5d-916b-0b0780c16638}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +125,9 @@
     <ClInclude Include="..\include\component\TextComponent.hpp">
       <Filter>Header Files\component</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\game\Game.hpp">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -199,6 +204,9 @@
     </ClCompile>
     <ClCompile Include="..\src\component\TextComponent.cpp">
       <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\Game.cpp">
+      <Filter>Source Files\game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

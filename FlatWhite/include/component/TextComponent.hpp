@@ -16,7 +16,8 @@ public:
 		const Font&   font,
 		const Colour& colour,
 		const Vec2f&  position,
-		const std::string& content
+		const std::string& content,
+		float depth = 10.f
 	);
 
 	void setContent(const std::string& content);

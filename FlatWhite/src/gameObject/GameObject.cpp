@@ -105,31 +105,50 @@ std::list<std::shared_ptr<GameObject>> GameObject::lateUpdate()
 	return res;
 }
 
-void GameObject::render(RenderTarget* window)
-{
-	for (auto& renderable : m_renderableComponents)
-	{
-		if (renderable->isVisible())
-		{
-			renderable->render(window);
-		}
-	}
-
-	for (auto& child : m_children)
-	{
-		child->render(window);
-	}
-}
+//void GameObject::render(RenderTarget* window)
+//{
+//	for (auto& renderable : m_renderableComponents)
+//	{
+//		if (renderable->isVisible())
+//		{
+//			renderable->render(window);
+//		}
+//	}
+//
+//	for (auto& child : m_children)
+//	{
+//		child->render(window);
+//	}
+//}
 
 void GameObject::collisionResponse(GameObject* other)
 {
 
 }
 
+std::list<std::shared_ptr<RenderableComponent>> GameObject::getRenderableComponentsDeep()
+{
+	std::list<std::shared_ptr<RenderableComponent>> res;
+
+	for (auto& child : m_children)
+	{
+		for (auto& renderable : child->getRenderableComponentsDeep())
+		{
+			res.push_back(renderable);
+		}
+	}
+
+	for (auto& renderable : this->getRenderableComponentsShallow())
+	{
+		res.push_back(renderable);
+	}
+
+	return res;
+}
+
 //
 //  PROTECTED:
 //
-
 
 
 }

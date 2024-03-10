@@ -3,9 +3,9 @@
 namespace fw
 {
 
-LineComponent::LineComponent(GameObject* owner)
+LineComponent::LineComponent(GameObject* owner, float depth)
 	:
-	RenderableComponent(owner),
+	RenderableComponent(owner, depth),
 	m_colour(fw::Colour::White)
 {
 

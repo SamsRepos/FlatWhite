@@ -16,7 +16,8 @@ public:
 		Colour outerColour,
 		Vec2f initPosition,
 		Vec2f size,
-		float borderWidth = GAUGE_DEFAULT_BORDER_WIDTH
+		float borderWidth = GAUGE_DEFAULT_BORDER_WIDTH,
+		float depth = 10.f
 	);
 
 	void addColourThreshold(float threshold, const Colour& colour); // 0.f <= threshold <= 1.f

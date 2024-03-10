@@ -32,21 +32,22 @@ public:
 	inline void setMoribundWhenParentIsMoribund(bool b) { m_moribundWhenParentIsMoribund = b; };
 	inline bool moribundWhenParentIsMoribund() { return m_moribundWhenParentIsMoribund; };
 
+	inline std::list<std::shared_ptr<GameObject>>& getChildrenShallow() { return m_children; };
+	inline std::list<std::shared_ptr<Component>>& getComponentsShallow() { return m_components; };
+	inline std::list<std::shared_ptr<RenderableComponent>>& getRenderableComponentsShallow() { return m_renderableComponents; };
+	std::list<std::shared_ptr<RenderableComponent>> getRenderableComponentsDeep();
+
 protected:
 	// per frame functions, called by Space:
 	friend class Space;
 	virtual std::list<std::shared_ptr<GameObject>> lateUpdate();
 	virtual void handleInput(const Input& input);
 	virtual void update(const float& deltaTime);
-	virtual void render(RenderTarget* window);
+	////virtual void render(RenderTarget* window);
 	// called by PhysicsSpace
 	friend class PhysicsSpace;
 	virtual void collisionResponse(GameObject* other);
-
-	inline std::list<std::shared_ptr<GameObject>>& getChildren() { return m_children; };
-	inline std::list<std::shared_ptr<Component>>& getComponents() { return m_components; };
-	inline std::list<std::shared_ptr<RenderableComponent>>& getRenderableComponents() { return m_renderableComponents; };
-
+	
 private:
 	std::list<std::shared_ptr<GameObject>> m_children;
 	std::list<std::shared_ptr<Component>> m_components;

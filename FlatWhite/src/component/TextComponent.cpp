@@ -8,10 +8,11 @@ TextComponent::TextComponent(
 	const Font&   font,
 	const Colour& colour,
 	const Vec2f&  position,
-	const std::string& content
+	const std::string& content,
+	float depth
 )
 	:
-	RenderableComponent(owner),
+	RenderableComponent(owner, depth),
 	m_font(font),
 	m_colour(colour),
 	m_position(position),

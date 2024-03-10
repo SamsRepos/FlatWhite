@@ -101,10 +101,11 @@ ParticleSystemComponent::ParticleSystemComponent(
     Colour defaultTint,
     std::shared_ptr<Texture> texture,
     std::shared_ptr<ParticleSourceArea> sourceArea,
-    float particlesPerSecond
+    float particlesPerSecond,
+    float depth
 )
     :
-RenderableComponent(owner),
+RenderableComponent(owner, depth),
     m_defaultTtl(defaultTtl),
     m_defaultTint(defaultTint),
     m_texture(texture),

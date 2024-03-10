@@ -4,6 +4,7 @@
 #include <list>
 
 #include "Vec2f.hpp"
+#include "space/Space.hpp"
 
 namespace fw 
 {
@@ -73,6 +74,7 @@ namespace fw
 			return isType<Base, Derived>(basePtr.get());
 		};
 
+		void DumpGameObjectHierarchy(std::list<std::shared_ptr<fw::GameObject>> gameObjects, std::string preStr = "");
 	}
 
 }

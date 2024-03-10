@@ -11,10 +11,11 @@ GaugeComponent::GaugeComponent(
 	Colour outerColour,
 	Vec2f initPosition,
 	Vec2f size,
-	float borderWidth
+	float borderWidth,
+	float depth
 )
 	:
-	RenderableComponent(owner),
+	RenderableComponent(owner, depth),
 	m_borderWidth(borderWidth)
 {
 	m_innerRect.setFillColor(innerColour);

@@ -19,6 +19,8 @@
 #include "common/Rectangle.hpp"
 #include "common/lineSegment.hpp"
 
+#include "game/Game.hpp"
+
 #include "space/PhysicsSpace.hpp"
 #include "space/Space.hpp"
 
