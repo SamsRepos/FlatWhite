@@ -40,20 +40,35 @@ private:
     Vec2f m_sourceMax;
 };
 
-
-class CircleParticleSourceArea : public ParticleSourceArea
+class CircleParticleSource : public ParticleSourceArea
 {
 public:
-    CircleParticleSourceArea(const Vec2f& position, const float& radius);
+    CircleParticleSource(const Vec2f& position, const float& radius);
 
     void updateSourcePosition(const Vec2f& position);
     void updateSourceRadius(const float& radius);
 
-    virtual Vec2f getSpawnPosition();
-private:
+protected:
     Vec2f m_position;
     float m_radius;
 
+};
+
+class CircleParticleSourcePerimiter : public CircleParticleSource
+{
+public:
+    CircleParticleSourcePerimiter(const Vec2f& position, const float& radius, const float& perimiterWidth = 0.f);
+    virtual Vec2f getSpawnPosition();
+
+private:
+    float m_perimiterWidth;
+};
+
+class CircleParticleSourceArea : public CircleParticleSource
+{
+public:
+    CircleParticleSourceArea(const Vec2f& position, const float& radius);
+    virtual Vec2f getSpawnPosition();
 };
 
 const float DEFAULT_PARTICLES_PER_SECOND = 10.f;

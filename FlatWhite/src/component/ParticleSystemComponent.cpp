@@ -65,29 +65,48 @@ Vec2f RectangleParticleSourceArea::getSpawnPosition()
 
 
 //
-// Circle Source Area:
+// Circle Source:
 // 
 
-CircleParticleSourceArea::CircleParticleSourceArea(const Vec2f& position, const float& radius)
+CircleParticleSource::CircleParticleSource(const Vec2f& position, const float& radius)
     :
     m_position(position),
     m_radius(radius)
 {
 }
 
-void CircleParticleSourceArea::updateSourcePosition(const Vec2f& position)
+void CircleParticleSource::updateSourcePosition(const Vec2f& position)
 {
     m_position = position;
 }
 
-void CircleParticleSourceArea::updateSourceRadius(const float& radius)
+void CircleParticleSource::updateSourceRadius(const float& radius)
 {
     m_radius = radius;
 }
 
+CircleParticleSourcePerimiter::CircleParticleSourcePerimiter(const Vec2f& position, const float& radius, const float& perimiterWidth)
+    :
+    CircleParticleSource(position, radius),
+    m_perimiterWidth(perimiterWidth)
+{
+}
+
+Vec2f CircleParticleSourcePerimiter::getSpawnPosition()
+{
+    float offset = (m_perimiterWidth > 0.f) ? util::lerp(-(m_perimiterWidth / 2), (m_perimiterWidth/2), util::randomFloat()) : 0.f;
+    return m_position + (util::randomUnitVec2f() * (m_radius + offset));
+}
+
+CircleParticleSourceArea::CircleParticleSourceArea(const Vec2f& position, const float& radius)
+    :
+    CircleParticleSource(position, radius)
+{
+}
+
 Vec2f CircleParticleSourceArea::getSpawnPosition()
 {
-    return m_position + (util::randomUnitVec2f() * m_radius);
+    return m_position + (util::randomUnitVec2f() * util::lerp(0.f, m_radius, util::randomFloat()));
 }
 
 
