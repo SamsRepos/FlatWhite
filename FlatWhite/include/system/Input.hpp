@@ -38,6 +38,8 @@ enum class XboxStick
 	DPad
 };
 
+typedef sf::Keyboard Keyboard;
+
 class Input
 {
 public:
