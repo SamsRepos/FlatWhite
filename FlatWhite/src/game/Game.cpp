@@ -51,17 +51,17 @@ void Game::run()
 
     Input input;
 
-    if (m_spaces.empty())
+    if(m_spaces.empty())
     {
         throw m_spaces;
     }
 
-    if (!m_currentSpace)
+    if(!m_currentSpace)
     {
         m_currentSpace = m_spaces[0];
     }
 
-    while (window->isOpen())
+    while(window->isOpen())
     {
         input.perFrameUpdate();
         window->pollAllEvents(&input);

@@ -3,6 +3,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include "common/Vec2f.hpp"
+#include <vector>
 
 namespace fw
 {
@@ -50,7 +51,9 @@ public:
 	bool isKeyDown(int key) const;
 	bool isKeyUp(int key) const;
 	bool isKeyPressedNow(int key) const;
+	bool isAnyKeyPressedNow(const std::vector<Keyboard::Key>& keys) const;
 	bool isAnyKeyDown() const;
+	bool isAnyKeyDown(const std::vector<Keyboard::Key>& keys) const;
 
 	int getMousePosX() const;
 	int getMousePosY() const;
@@ -65,6 +68,8 @@ public:
 	bool isXboxControllerConnected() const;
 	bool isXboxButtonDown(XboxButton button) const;
 	bool isXboxButtonPressedNow(XboxButton button) const;
+	bool isAnyXboxButtonPressedNow(const std::vector<XboxButton>& buttons) const;
+	bool isAnyXboxButtonDown(const std::vector<XboxButton>& buttons) const;
 	bool isXboxTriggerDown(XboxTrigger trigger, float threshold = XBOX_TRIGGER_PRESSED_THRESHOLD_DEFAULT) const;
 	Vec2f getXboxStick(XboxStick stick) const;
 

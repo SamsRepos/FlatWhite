@@ -100,29 +100,28 @@ void Input::eventUpdate(const sf::Event& event)
 //  PUBLIC GETTERS:
 //
 
-// returns true if out of range
-bool rangeCheck(int key, int range)
+bool keyIsOutOfRange(int key, int range)
 {
 	return key < 0 || key >= range;
 }
 
 bool Input::isKeyDown(int key) const
 {
-	if (rangeCheck(key, KEYS_RANGE)) return false;
+	if (keyIsOutOfRange(key, KEYS_RANGE)) return false;
 
 	return m_keysDown[key];
 }
 
 bool Input::isKeyUp(int key) const
 {
-	if (rangeCheck(key, KEYS_RANGE)) return false;
+	if (keyIsOutOfRange(key, KEYS_RANGE)) return false;
 
 	return !(m_keysDown[key]);
 }
 
 bool Input::isKeyPressedNow(int key) const
 {
-	if (rangeCheck(key, KEYS_RANGE)) return false;
+	if(keyIsOutOfRange(key, KEYS_RANGE)) return false;
 
 	bool isKeyDownNow = isKeyDown(key);
 	bool wasKeyUpBefore = !(m_keysDownPreviously[key]);
@@ -132,9 +131,29 @@ bool Input::isKeyPressedNow(int key) const
 	return res;
 }
 
+bool Input::isAnyKeyPressedNow(const std::vector<Keyboard::Key>& keys) const
+{
+	for(const int& key : keys)
+	{
+		if(isKeyPressedNow(key)) return true;
+	}
+
+	return false;
+}
+
 bool Input::isAnyKeyDown() const
 {
 	return m_anyKeyDown;
+}
+
+bool Input::isAnyKeyDown(const std::vector<Keyboard::Key>& keys) const
+{
+	for(const int& key : keys)
+	{
+		if(isKeyDown(key)) return true;
+	}
+
+	return false;
 }
 
 int Input::getMousePosX() const
@@ -184,14 +203,14 @@ bool Input::isXboxControllerConnected() const
 
 bool Input::isXboxButtonDown(XboxButton button) const
 {
-	if (rangeCheck(unsigned int(button), XBOX_BUTTONS_RANGE)) return false;
+	if(keyIsOutOfRange(unsigned int(button), XBOX_BUTTONS_RANGE)) return false;
 
 	return m_xboxButtonsDown[unsigned int(button)];
 }
 
 bool Input::isXboxButtonPressedNow(XboxButton button) const
 {
-	if (rangeCheck(unsigned int(button), XBOX_BUTTONS_RANGE)) return false;
+	if(keyIsOutOfRange(unsigned int(button), XBOX_BUTTONS_RANGE)) return false;
 
 	bool isButtonDownNow   = isXboxButtonDown(button);
 	bool wasButtonUpBefore = !(m_xboxButtonsDownPreviously[unsigned int(button)]);
@@ -201,6 +220,25 @@ bool Input::isXboxButtonPressedNow(XboxButton button) const
 	return res;
 }
 
+bool Input::isAnyXboxButtonPressedNow(const std::vector<XboxButton>& buttons) const
+{
+	for(const XboxButton& button : buttons)
+	{
+		if(isXboxButtonPressedNow(button)) return true;
+	}
+
+	return false;
+}
+
+bool Input::isAnyXboxButtonDown(const std::vector<XboxButton>& buttons) const
+{
+	for(const XboxButton& button : buttons)
+	{
+		if(isXboxButtonDown(button)) return true;
+	}
+
+	return false;
+}
 
 bool Input::isXboxTriggerDown(XboxTrigger trigger, float threshold) const
 {
@@ -271,14 +309,14 @@ Vec2f Input::getXboxStick(XboxStick stick) const
 
 void Input::setKeyDown(int key)
 {
-	if (rangeCheck(key, KEYS_RANGE)) return;
+	if(keyIsOutOfRange(key, KEYS_RANGE)) return;
 
 	m_keysDown[key] = true;
 }
 
 void Input::setKeyUp(int key)
 {
-	if (rangeCheck(key, KEYS_RANGE)) return;
+	if(keyIsOutOfRange(key, KEYS_RANGE)) return;
 
 	m_keysDown[key] = false;
 }
