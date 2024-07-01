@@ -37,6 +37,57 @@ void TextComponent::setPosition(const Vec2f& position)
 	m_text.setPosition(position);
 }
 
+void TextComponent::setOrigin(const Vec2f& origin)
+{
+	m_origin = origin;
+	m_text.setOrigin(origin);
+}
+
+void TextComponent::setOrigin(OriginPoints originPoint)
+{
+	float width = m_text.getGlobalBounds().width;
+	float height = m_text.getGlobalBounds().height;
+
+	float halfWidth  = width / 2.f;
+	float halfHeight = height / 2.f;
+
+	switch(originPoint)
+	{
+
+	case OriginPoints::TOP_LEFT:
+		m_origin = fw::Vec2f(0.f, 0.f);
+		break;
+	case OriginPoints::TOP_CENTRE:
+		m_origin = fw::Vec2f(halfWidth, 0.f);
+		break;
+	case OriginPoints::TOP_RIGHT:
+		m_origin = fw::Vec2f(width, 0.f);
+		break;
+
+	case OriginPoints::CENTRE_LEFT:
+		m_origin = fw::Vec2f(0.f, halfHeight);
+		break;
+	case OriginPoints::CENTRE:
+		m_origin = fw::Vec2f(halfWidth, halfHeight);
+		break;
+	case OriginPoints::CENTRE_RIGHT:
+		m_origin = fw::Vec2f(width, halfHeight);
+		break;
+
+	case OriginPoints::BOTTOM_LEFT:
+		m_origin = fw::Vec2f(0.f, height);
+		break;
+	case OriginPoints::BOTTOM_CENTRE:
+		m_origin = fw::Vec2f(halfWidth, height);
+		break;
+	case OriginPoints::BOTTOM_RIGHT:
+		m_origin = fw::Vec2f(width, height);
+		break;
+	}
+
+	m_text.setOrigin(m_origin);
+}
+
 //
 // PROTECTED:
 //

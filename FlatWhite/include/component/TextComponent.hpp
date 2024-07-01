@@ -8,6 +8,12 @@ namespace fw
 typedef sf::Font Font;
 typedef sf::Text Text;
 
+enum OriginPoints{
+	TOP_LEFT,    TOP_CENTRE,    TOP_RIGHT,
+	CENTRE_LEFT, CENTRE,        CENTRE_RIGHT,
+	BOTTOM_LEFT, BOTTOM_CENTRE, BOTTOM_RIGHT
+};
+
 class TextComponent : public RenderableComponent
 {
 public:
@@ -20,9 +26,13 @@ public:
 		float depth = 10.f
 	);
 
+
 	void setContent(const std::string& content);
-	inline void setPosition(const Vec2f& position);
 	inline void setCharacterSize(const unsigned int& size) { m_text.setCharacterSize(size); };
+
+	void setPosition(const Vec2f& position);
+	void setOrigin(const Vec2f& origin);
+	void setOrigin(OriginPoints originPoint);
 
 protected:
 	virtual void update(const float& deltaTime) { };
@@ -34,6 +44,7 @@ private:
 	Font m_font;
 	Colour m_colour;
 	Vec2f m_position;
+	Vec2f m_origin;
 	std::string m_content;
 };
 }
