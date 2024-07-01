@@ -88,6 +88,11 @@ void TextComponent::setOrigin(OriginPoints originPoint)
 	m_text.setOrigin(m_origin);
 }
 
+void TextComponent::setColour(const fw::Colour& colour)
+{
+	m_text.setFillColor(colour);
+}
+
 //
 // PROTECTED:
 //

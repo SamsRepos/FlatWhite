@@ -34,6 +34,8 @@ public:
 	void setOrigin(const Vec2f& origin);
 	void setOrigin(OriginPoints originPoint);
 
+	void setColour(const fw::Colour& colour);
+
 protected:
 	virtual void update(const float& deltaTime) { };
 	virtual void render(RenderTarget* window);
