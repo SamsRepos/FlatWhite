@@ -11,6 +11,8 @@
 namespace fw
 {
 
+class Game;
+
 class Space
 {
 public:
@@ -31,7 +33,13 @@ protected:
 	
 	inline const Rectangle& getBounds() const { return m_bounds; };
 
+	inline Game* getGame() { return m_game; };
+
 private:
+	void setGame(Game* game);
+	
+	Game* m_game;
+
 	Rectangle m_bounds;
 	std::list<std::shared_ptr<GameObject>> m_gameObjects;
 

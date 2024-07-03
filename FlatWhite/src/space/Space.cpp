@@ -93,9 +93,14 @@ void Space::render(RenderTarget* window)
 	}
 }
 
-
 //
 //  PRIVATE:
 //
+
+void Space::setGame(Game* game)
+{
+	m_game = game;
+}
+
 
 }

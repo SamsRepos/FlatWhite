@@ -30,6 +30,19 @@ void Game::setWindowTitle(std::string title)
 void Game::addSpace(std::shared_ptr<Space> space)
 {
     m_spaces.push_back(space);
+    space->setGame(this);
+}
+
+void Game::setCurrentSpace(size_t index)
+{
+    index = std::min(index, m_spaces.size());
+
+    m_currentSpace = m_spaces[index];
+}
+
+void Game::setCurrentSpace(std::shared_ptr<Space> space)
+{
+    m_currentSpace = space;
 }
 
 

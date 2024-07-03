@@ -23,6 +23,10 @@ public:
 
     void addSpace(std::shared_ptr<Space> space);
 
+    void setCurrentSpace(size_t index);
+
+    void setCurrentSpace(std::shared_ptr<Space> space);
+
     // run:
     void run();
 
