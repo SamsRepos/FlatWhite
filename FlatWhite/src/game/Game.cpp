@@ -8,7 +8,8 @@ namespace fw
 
 Game::Game()
     :
-    m_currentSpace(NULL)
+    m_currentSpace(NULL),
+    m_moribund(false)
 {
 }
 
@@ -27,22 +28,25 @@ void Game::setWindowTitle(std::string title)
     m_windowData.title = title;
 }
 
-void Game::addSpace(std::shared_ptr<Space> space)
+void Game::pushSpace(std::shared_ptr<Space> space)
 {
-    m_spaces.push_back(space);
+    m_spacesStack.push(space);
     space->setGame(this);
-}
-
-void Game::setCurrentSpace(size_t index)
-{
-    index = std::min(index, m_spaces.size());
-
-    m_currentSpace = m_spaces[index];
-}
-
-void Game::setCurrentSpace(std::shared_ptr<Space> space)
-{
     m_currentSpace = space;
+}
+
+void Game::popSpace()
+{
+    m_spacesStack.pop();
+
+    if(m_spacesStack.size() > 0)
+    {
+        m_currentSpace = m_spacesStack.top();
+    }
+    else
+    {
+        m_moribund = true;
+    }
 }
 
 
@@ -64,17 +68,17 @@ void Game::run()
 
     Input input;
 
-    if(m_spaces.empty())
+    if(m_spacesStack.empty())
     {
-        throw m_spaces;
+        throw m_spacesStack;
     }
 
     if(!m_currentSpace)
     {
-        m_currentSpace = m_spaces[0];
+        m_currentSpace = m_spacesStack.top();
     }
 
-    while(window->isOpen())
+    while(window->isOpen() && !m_moribund)
     {
         input.perFrameUpdate();
         window->pollAllEvents(&input);
@@ -86,6 +90,11 @@ void Game::run()
         window->clear();
         m_currentSpace->render(window.get());
         window->display();
+    }
+
+    if(window->isOpen())
+    {
+        window->close();
     }
 
 }

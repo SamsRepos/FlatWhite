@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <string>
+#include <stack>
 
 const int DEFAULT_WINDOW_WIDTH = 1366;
 const int DEFAULT_WINDOW_HEIGHT = 768;
@@ -21,17 +22,15 @@ public:
     void setWindowDimensions(int width, int height);
     void setWindowTitle(std::string title);
 
-    void addSpace(std::shared_ptr<Space> space);
+    void pushSpace(std::shared_ptr<Space> space);
 
-    void setCurrentSpace(size_t index);
-
-    void setCurrentSpace(std::shared_ptr<Space> space);
+    void popSpace();
 
     // run:
     void run();
 
 private:
-    std::vector<std::shared_ptr<Space>> m_spaces;
+    std::stack<std::shared_ptr<Space>> m_spacesStack;
     std::shared_ptr<Space> m_currentSpace;
 
     struct WindowData 
@@ -41,6 +40,8 @@ private:
         std::string title = DEFAULT_WINDOW_TITLE;
     };
     WindowData m_windowData;
+
+    bool m_moribund;
 };
 
 }
