@@ -31,7 +31,6 @@ void Game::setWindowTitle(std::string title)
 void Game::pushSpace(std::shared_ptr<Space> space)
 {
     m_spacesStack.push(space);
-    space->setGame(this);
     m_currentSpace = space;
 }
 

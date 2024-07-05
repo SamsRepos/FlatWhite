@@ -14,6 +14,7 @@ class PhysicsSpace : public Space, public b2World
 {
 public:
 	PhysicsSpace(
+		Game* game,
 		const Rectangle& bounds,
 		int pixelsPerMetre = 1,
 		const Vec2f& gravity = Vec2f(0.f, 9.81f)

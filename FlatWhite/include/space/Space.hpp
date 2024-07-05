@@ -16,12 +16,15 @@ class Game;
 class Space
 {
 public:
-	Space(const Rectangle& bounds);
+	Space(Game* game, const Rectangle& bounds);
 	~Space();
 
 	void addGameObject(std::shared_ptr<GameObject> gameObject);
 
 	inline const std::list<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; }; 
+
+	inline void setMoribund() { m_moribund = true; };
+	inline bool isMoribund() { return m_moribund; };
 
 protected:
 	// per frame updates, called by Game:
@@ -36,13 +39,12 @@ protected:
 	inline Game* getGame() { return m_game; };
 
 private:
-	void setGame(Game* game);
-	
 	Game* m_game;
 
 	Rectangle m_bounds;
 	std::list<std::shared_ptr<GameObject>> m_gameObjects;
 
+	bool m_moribund;
 };
 
 }

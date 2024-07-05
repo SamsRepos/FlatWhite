@@ -23,26 +23,26 @@
     <Filter Include="Header Files\game">
       <UniqueIdentifier>{57a6107e-759d-4e4b-8d61-2a7f2b2faede}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Source Files">
+    <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files\Source Files\system">
+    <Filter Include="Source Files\system">
       <UniqueIdentifier>{e40ab721-c205-47d6-a3c0-287df7b63347}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Source Files\space">
+    <Filter Include="Source Files\space">
       <UniqueIdentifier>{965ea3d7-d688-4910-8040-04a414e5efc1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Source Files\gameObject">
+    <Filter Include="Source Files\gameObject">
       <UniqueIdentifier>{cd66084a-f371-47d8-ab2f-d260e5f6550a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Source Files\component">
+    <Filter Include="Source Files\component">
       <UniqueIdentifier>{73d78a98-a0ff-487e-9526-e7022989c599}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Source Files\common">
+    <Filter Include="Source Files\common">
       <UniqueIdentifier>{06b7eff1-cf66-4771-8191-ac82520dac12}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Source Files\game">
+    <Filter Include="Source Files\game">
       <UniqueIdentifier>{c1bc3139-e8eb-4b5d-916b-0b0780c16638}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -131,82 +131,82 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
-      <Filter>Header Files\Source Files\system</Filter>
+      <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="..\src\system\Physics.cpp">
-      <Filter>Header Files\Source Files\system</Filter>
+      <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="..\src\system\Graphics.cpp">
-      <Filter>Header Files\Source Files\system</Filter>
+      <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="..\src\space\Space.cpp">
-      <Filter>Header Files\Source Files\space</Filter>
+      <Filter>Source Files\space</Filter>
     </ClCompile>
     <ClCompile Include="..\src\space\PhysicsSpace.cpp">
-      <Filter>Header Files\Source Files\space</Filter>
+      <Filter>Source Files\space</Filter>
     </ClCompile>
     <ClCompile Include="..\src\gameObject\GameObject.cpp">
-      <Filter>Header Files\Source Files\gameObject</Filter>
+      <Filter>Source Files\gameObject</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\RenderableComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\SpawnerComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\SpriteComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\BodyComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\Component.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\ParticleSystemComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\common\Vec2f.cpp">
-      <Filter>Header Files\Source Files\common</Filter>
+      <Filter>Source Files\common</Filter>
     </ClCompile>
     <ClCompile Include="..\src\common\Util.cpp">
-      <Filter>Header Files\Source Files\common</Filter>
+      <Filter>Source Files\common</Filter>
     </ClCompile>
     <ClCompile Include="..\src\system\TextureManager.cpp">
-      <Filter>Header Files\Source Files\system</Filter>
+      <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\GaugeComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\system\DeltaClock.cpp">
-      <Filter>Header Files\Source Files\system</Filter>
+      <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="..\src\system\Window.cpp">
-      <Filter>Header Files\Source Files\system</Filter>
+      <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="..\src\system\Sound.cpp">
-      <Filter>Header Files\Source Files\system</Filter>
+      <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="..\src\system\SoundBufferManager.cpp">
-      <Filter>Header Files\Source Files\system</Filter>
+      <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\SoundComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\common\Rectangle.cpp">
-      <Filter>Header Files\Source Files\common</Filter>
+      <Filter>Source Files\common</Filter>
     </ClCompile>
     <ClCompile Include="..\src\common\LineSegment.cpp">
-      <Filter>Header Files\Source Files\common</Filter>
+      <Filter>Source Files\common</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\LineComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\component\TextComponent.cpp">
-      <Filter>Header Files\Source Files\component</Filter>
+      <Filter>Source Files\component</Filter>
     </ClCompile>
     <ClCompile Include="..\src\game\Game.cpp">
-      <Filter>Header Files\Source Files\game</Filter>
+      <Filter>Source Files\game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

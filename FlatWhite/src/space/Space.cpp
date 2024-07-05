@@ -9,9 +9,11 @@ namespace fw
 //  CONSTRUCTOR/DESTRUCTOR
 //
 
-Space::Space(const Rectangle& bounds)
+Space::Space(Game* game, const Rectangle& bounds)
 	:
-	m_bounds(bounds)
+	m_game(game),
+	m_bounds(bounds),
+	m_moribund(false)
 {
 
 }
@@ -97,10 +99,6 @@ void Space::render(RenderTarget* window)
 //  PRIVATE:
 //
 
-void Space::setGame(Game* game)
-{
-	m_game = game;
-}
 
 
 }

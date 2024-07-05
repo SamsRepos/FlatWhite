@@ -7,12 +7,13 @@ namespace fw
 {
 
 PhysicsSpace::PhysicsSpace(
+	Game* game,
 	const Rectangle& bounds,
 	int pixelsPerMetre, 
 	const Vec2f& gravity)
 	:
 	m_pixelsPerMetre(pixelsPerMetre),
-	Space::Space(bounds),
+	Space::Space(game, bounds),
 	b2World(gravity)
 {
 
