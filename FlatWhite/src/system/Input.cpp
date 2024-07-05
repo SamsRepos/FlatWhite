@@ -100,28 +100,28 @@ void Input::eventUpdate(const sf::Event& event)
 //  PUBLIC GETTERS:
 //
 
-bool keyIsOutOfRange(int key, int range)
+bool indexIsOutOfRange(int index, int range)
 {
-	return key < 0 || key >= range;
+	return index < 0 || index >= range;
 }
 
 bool Input::isKeyDown(int key) const
 {
-	if (keyIsOutOfRange(key, KEYS_RANGE)) return false;
+	if (indexIsOutOfRange(key, KEYS_RANGE)) return false;
 
 	return m_keysDown[key];
 }
 
 bool Input::isKeyUp(int key) const
 {
-	if (keyIsOutOfRange(key, KEYS_RANGE)) return false;
+	if (indexIsOutOfRange(key, KEYS_RANGE)) return false;
 
 	return !(m_keysDown[key]);
 }
 
 bool Input::isKeyPressedNow(int key) const
 {
-	if(keyIsOutOfRange(key, KEYS_RANGE)) return false;
+	if(indexIsOutOfRange(key, KEYS_RANGE)) return false;
 
 	bool isKeyDownNow = isKeyDown(key);
 	bool wasKeyUpBefore = !(m_keysDownPreviously[key]);
@@ -203,14 +203,14 @@ bool Input::isXboxControllerConnected() const
 
 bool Input::isXboxButtonDown(XboxButton button) const
 {
-	if(keyIsOutOfRange(unsigned int(button), XBOX_BUTTONS_RANGE)) return false;
+	if(indexIsOutOfRange(unsigned int(button), XBOX_BUTTONS_RANGE)) return false;
 
 	return m_xboxButtonsDown[unsigned int(button)];
 }
 
 bool Input::isXboxButtonPressedNow(XboxButton button) const
 {
-	if(keyIsOutOfRange(unsigned int(button), XBOX_BUTTONS_RANGE)) return false;
+	if(indexIsOutOfRange(unsigned int(button), XBOX_BUTTONS_RANGE)) return false;
 
 	bool isButtonDownNow   = isXboxButtonDown(button);
 	bool wasButtonUpBefore = !(m_xboxButtonsDownPreviously[unsigned int(button)]);
@@ -293,9 +293,16 @@ Vec2f Input::getXboxStick(XboxStick stick) const
 	break;
 	case XboxStick::DPad:
 	{
-		return axesToVector(
+		static fw::Vec2f D_PAD_CORRECTOR = fw::Vec2f(0.f, -1.f);
+
+		fw::Vec2f dPadAxesVector = axesToVector(
 			sf::Joystick::Axis::PovX,
 			sf::Joystick::Axis::PovY
+		);
+
+		return fw::Vec2f(
+			dPadAxesVector.x * D_PAD_CORRECTOR.x,
+			dPadAxesVector.y * D_PAD_CORRECTOR.y
 		);
 	}
 	break;
@@ -309,14 +316,14 @@ Vec2f Input::getXboxStick(XboxStick stick) const
 
 void Input::setKeyDown(int key)
 {
-	if(keyIsOutOfRange(key, KEYS_RANGE)) return;
+	if(indexIsOutOfRange(key, KEYS_RANGE)) return;
 
 	m_keysDown[key] = true;
 }
 
 void Input::setKeyUp(int key)
 {
-	if(keyIsOutOfRange(key, KEYS_RANGE)) return;
+	if(indexIsOutOfRange(key, KEYS_RANGE)) return;
 
 	m_keysDown[key] = false;
 }
