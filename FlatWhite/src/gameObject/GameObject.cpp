@@ -79,9 +79,12 @@ void GameObject::update(const float& deltaTime)
 
 std::list<std::shared_ptr<GameObject>> GameObject::lateUpdate()
 {
+	m_visible = m_visibleOnNextFrame;
+	m_awake = m_awakeOnNextFrame;
+
 	std::list<std::shared_ptr<GameObject>> res;
 
-	for (auto& component : m_components)
+	for(auto& component : m_components)
 	{
 		component->lateUpdate();
 	}

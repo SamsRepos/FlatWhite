@@ -26,6 +26,14 @@ public:
 	inline float getRotation() { return m_rotation; };
 	inline void  setRotation(float rotation) { m_rotation = rotation; };
 
+	inline void setAwake(bool awake) { m_awake = m_awakeOnNextFrame = awake; };
+	inline void setAwakeOnNextFrame(bool awake) { m_awakeOnNextFrame = awake; }
+	inline bool isAwake() { return m_awake; };
+
+	inline void setVisible(bool visible) { m_visible = m_visibleOnNextFrame = visible; };
+	inline void setVisibleOnNextFrame(bool visible) { m_visibleOnNextFrame = visible; };
+	inline bool isVisible() { return m_visible; };
+
 	inline void setMoribund() { m_moribund = true; };
 	inline bool isMoribund() { return m_moribund; };
 
@@ -54,7 +62,13 @@ private:
 	Vec2f m_position; // in pixels
 	float m_rotation; // in radians
 
-	bool m_moribund = false; // set to true when game object is to be deleted at the end of the current frame
+	bool m_visible             = true;
+	bool m_visibleOnNextFrame  = true;
+
+	bool m_awake               = true;
+	bool m_awakeOnNextFrame    = true;
+
+	bool m_moribund                     = false; // set to true when game object is to be deleted at the end of the current frame
 	bool m_moribundWhenParentIsMoribund = true;
 };
 

@@ -41,6 +41,8 @@ void Space::handleInput(const Input& input)
 {
 	for (auto& object : m_gameObjects)
 	{
+		if(!object->isAwake()) continue;
+
 		object->handleInput(input);
 	}
 }
@@ -50,6 +52,8 @@ void Space::update(const float& deltaTime)
 {
 	for (auto& object : m_gameObjects)
 	{
+		if(!object->isAwake()) continue;
+
 		object->update(deltaTime);
 	}
 }
@@ -76,6 +80,8 @@ void Space::render(RenderTarget* window)
 	//
 	for (auto& gameObject : m_gameObjects)
 	{
+		if(!gameObject->isVisible()) continue;
+
 		for (auto& renderable : gameObject->getRenderableComponentsDeep())
 		{
 			renderableBatch.push_back(renderable);
