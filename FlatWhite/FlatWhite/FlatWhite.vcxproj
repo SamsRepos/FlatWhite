@@ -159,6 +159,8 @@
     <ClInclude Include="..\include\component\TextComponent.hpp" />
     <ClInclude Include="..\include\FlatWhite.hpp" />
     <ClInclude Include="..\include\gameObject\GameObject.hpp" />
+    <ClInclude Include="..\include\gameObject\menu\MenuItem.hpp" />
+    <ClInclude Include="..\include\gameObject\menu\Menu.hpp" />
     <ClInclude Include="..\include\game\Game.hpp" />
     <ClInclude Include="..\include\space\PhysicsSpace.hpp" />
     <ClInclude Include="..\include\space\Space.hpp" />
@@ -187,6 +189,8 @@
     <ClCompile Include="..\src\component\SpriteComponent.cpp" />
     <ClCompile Include="..\src\component\TextComponent.cpp" />
     <ClCompile Include="..\src\gameObject\GameObject.cpp" />
+    <ClCompile Include="..\src\gameObject\menu\MenuItem.cpp" />
+    <ClCompile Include="..\src\gameObject\menu\Menu.cpp" />
     <ClCompile Include="..\src\game\Game.cpp" />
     <ClCompile Include="..\src\space\PhysicsSpace.cpp" />
     <ClCompile Include="..\src\space\Space.cpp" />

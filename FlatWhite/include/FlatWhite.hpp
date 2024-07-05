@@ -4,6 +4,9 @@
 
 #include "gameObject/GameObject.hpp"
 
+#include "gameObject/menu/MenuItem.hpp"
+#include "gameObject/menu/Menu.hpp"
+
 #include "component/BodyComponent.hpp"
 #include "component/Component.hpp"
 #include "component/ParticleSystemComponent.hpp"

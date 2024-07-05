@@ -45,6 +45,12 @@
     <Filter Include="Source Files\game">
       <UniqueIdentifier>{c1bc3139-e8eb-4b5d-916b-0b0780c16638}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gameObject\menu">
+      <UniqueIdentifier>{81d2b827-469a-452d-9a79-78da8876f3d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gameObject\menu">
+      <UniqueIdentifier>{fb588b92-9f62-44e5-99b8-68d3406bc8b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\FlatWhite.hpp">
@@ -128,6 +134,12 @@
     <ClInclude Include="..\include\game\Game.hpp">
       <Filter>Header Files\game</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\gameObject\menu\MenuItem.hpp">
+      <Filter>Header Files\gameObject\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\gameObject\menu\Menu.hpp">
+      <Filter>Header Files\gameObject\menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -207,6 +219,12 @@
     </ClCompile>
     <ClCompile Include="..\src\game\Game.cpp">
       <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameObject\menu\MenuItem.cpp">
+      <Filter>Source Files\gameObject\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameObject\menu\Menu.cpp">
+      <Filter>Source Files\gameObject\menu</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

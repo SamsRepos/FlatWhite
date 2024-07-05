@@ -72,7 +72,7 @@ void Input::perFrameUpdate()
 			sf::Joystick::Axis::V
 		);
 
-		static fw::Vec2f D_PAD_CORRECTOR = fw::Vec2f(0.f, -1.f);
+		static fw::Vec2f D_PAD_CORRECTOR = fw::Vec2f(1.f, -1.f);
 
 		fw::Vec2f dPadAxesVector = axesToVector(
 			sf::Joystick::Axis::PovX,
