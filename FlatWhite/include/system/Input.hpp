@@ -4,6 +4,8 @@
 
 #include "common/Vec2f.hpp"
 #include <vector>
+#include <map>
+#include <unordered_map>
 
 namespace fw
 {
@@ -72,6 +74,7 @@ public:
 	bool isAnyXboxButtonDown(const std::vector<XboxButton>& buttons) const;
 	bool isXboxTriggerDown(XboxTrigger trigger, float threshold = XBOX_TRIGGER_PRESSED_THRESHOLD_DEFAULT) const;
 	Vec2f getXboxStick(XboxStick stick) const;
+	Vec2f getXboxStickIfExceededThresholdNow(XboxStick stick, float threshold) const;
 
 private:
 	void setKeyDown(int key);
@@ -90,12 +93,21 @@ private:
 
 	bool m_keysDown[KEYS_RANGE]{ false };
 	bool m_keysDownPreviously[KEYS_RANGE]{ false };
-	bool m_keysPressedNow[KEYS_RANGE]{ false };
 	bool m_anyKeyDown = false;
 
 	bool m_xboxButtonsDown[XBOX_BUTTONS_RANGE]{ false };
 	bool m_xboxButtonsDownPreviously[XBOX_BUTTONS_RANGE]{ false };
-	bool m_xboxButtonsPressedNow[XBOX_BUTTONS_RANGE]{ false };
+
+	std::map<XboxStick, fw::Vec2f> m_xBoxSticksPositions { 
+		{ XboxStick::Left,  fw::Vec2f::zero() },
+		{ XboxStick::Right, fw::Vec2f::zero() },
+		{ XboxStick::DPad,  fw::Vec2f::zero() }
+	};
+	std::map<XboxStick, fw::Vec2f> m_xBoxSticksPositionsPreviously { 
+		{ XboxStick::Left,  fw::Vec2f::zero() },
+		{ XboxStick::Right, fw::Vec2f::zero() },
+		{ XboxStick::DPad,  fw::Vec2f::zero() }
+	};
 
 	struct Mouse
 	{

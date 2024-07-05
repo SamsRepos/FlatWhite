@@ -86,6 +86,11 @@ void Game::run()
         m_currentSpace->update(deltaClock.getDeltaTime());
         m_currentSpace->lateUpdate();
 
+        if(m_currentSpace->isMoribund())
+        {
+            popSpace();
+        }
+
         window->clear();
         m_currentSpace->render(window.get());
         window->display();

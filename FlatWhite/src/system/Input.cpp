@@ -34,15 +34,55 @@ void Input::perFrameUpdate()
 	std::copy(std::begin(m_keysDown), std::end(m_keysDown), std::begin(m_keysDownPreviously));
 	m_previousMouse = m_mouse;
 
-	if (sf::Joystick::isConnected(0))
+	if(sf::Joystick::isConnected(0))
 	{
+		//TODO ensure xbox data is reset when disconnected
+
 		std::copy(std::begin(m_xboxButtonsDown), std::end(m_xboxButtonsDown), std::begin(m_xboxButtonsDownPreviously));
+		
+		for(auto const& pair : m_xBoxSticksPositions)
+		{
+			m_xBoxSticksPositionsPreviously[pair.first] = pair.second;
+		}
 
 		sf::Joystick::update();
-		for (auto i = 0; i < XBOX_BUTTONS_RANGE; ++i)
+		for(size_t i = 0; i < XBOX_BUTTONS_RANGE; ++i)
 		{
 			m_xboxButtonsDown[i] = sf::Joystick::isButtonPressed(0, unsigned int(i));
 		}
+
+		static auto axesToVector = [&](sf::Joystick::Axis xAxis, sf::Joystick::Axis yAxis)
+		{
+			float x = sf::Joystick::getAxisPosition(0, xAxis);
+			if (fabsf(x) < XBOX_AXIS_MIN_THRESHOLD) x = 0.f;
+
+			float y = sf::Joystick::getAxisPosition(0, yAxis);
+			if (fabsf(y) < XBOX_AXIS_MIN_THRESHOLD) y = 0.f;
+
+			return fw::Vec2f(x, y);
+		};
+
+		m_xBoxSticksPositions[XboxStick::Left] = axesToVector(
+			sf::Joystick::Axis::X,
+			sf::Joystick::Axis::Y
+		);
+
+		m_xBoxSticksPositions[XboxStick::Right] = axesToVector(
+			sf::Joystick::Axis::U,
+			sf::Joystick::Axis::V
+		);
+
+		static fw::Vec2f D_PAD_CORRECTOR = fw::Vec2f(0.f, -1.f);
+
+		fw::Vec2f dPadAxesVector = axesToVector(
+			sf::Joystick::Axis::PovX,
+			sf::Joystick::Axis::PovY
+		);
+
+		m_xBoxSticksPositions[XboxStick::DPad] = fw::Vec2f(
+			dPadAxesVector.x * D_PAD_CORRECTOR.x,
+			dPadAxesVector.y * D_PAD_CORRECTOR.y
+		);
 	}
 	
 }
@@ -262,51 +302,24 @@ bool Input::isXboxTriggerDown(XboxTrigger trigger, float threshold) const
 
 Vec2f Input::getXboxStick(XboxStick stick) const
 {
-	auto axesToVector = [&](sf::Joystick::Axis xAxis, sf::Joystick::Axis yAxis)
-	{
-		float x = sf::Joystick::getAxisPosition(0, xAxis);
-		if (fabsf(x) < XBOX_AXIS_MIN_THRESHOLD) x = 0.f;
+	return m_xBoxSticksPositions.at(stick);
+}
 
-		float y = sf::Joystick::getAxisPosition(0, yAxis);
-		if (fabsf(y) < XBOX_AXIS_MIN_THRESHOLD) y = 0.f;
+Vec2f Input::getXboxStickIfExceededThresholdNow(XboxStick stick, float threshold) const
+{
+	Vec2f currentPosition = m_xBoxSticksPositions.at(stick);
+	float magnitude = currentPosition.magnitude();
 
-		return fw::Vec2f(x, y);
-	};
-
-	switch (stick)
+	if(magnitude >= threshold)
 	{
-	case XboxStick::Left:
-	{
-		return axesToVector(
-			sf::Joystick::Axis::X,
-			sf::Joystick::Axis::Y
-		);
+		float previousMagnitude = m_xBoxSticksPositionsPreviously.at(stick).magnitude();
+		if(previousMagnitude < threshold)
+		{
+			return currentPosition;
+		}
 	}
-	break;
-	case XboxStick::Right:
-	{
-		return axesToVector(
-			sf::Joystick::Axis::U,
-			sf::Joystick::Axis::V
-		);
-	}
-	break;
-	case XboxStick::DPad:
-	{
-		static fw::Vec2f D_PAD_CORRECTOR = fw::Vec2f(0.f, -1.f);
 
-		fw::Vec2f dPadAxesVector = axesToVector(
-			sf::Joystick::Axis::PovX,
-			sf::Joystick::Axis::PovY
-		);
-
-		return fw::Vec2f(
-			dPadAxesVector.x * D_PAD_CORRECTOR.x,
-			dPadAxesVector.y * D_PAD_CORRECTOR.y
-		);
-	}
-	break;
-	}
+	return Vec2f::zero();
 }
 
 //
