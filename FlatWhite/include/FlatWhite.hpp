@@ -1,5 +1,3 @@
-// includes most of what you need to use the FlatWhite API
-
 #pragma once
 
 #include "gameObject/GameObject.hpp"
@@ -22,6 +20,8 @@
 #include "common/Vec2f.hpp"
 #include "common/Rectangle.hpp"
 #include "common/lineSegment.hpp"
+
+#include "globalStore/GlobalStore.hpp"
 
 #include "game/Game.hpp"
 

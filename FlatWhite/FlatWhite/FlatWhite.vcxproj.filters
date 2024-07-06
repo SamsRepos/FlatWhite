@@ -51,6 +51,12 @@
     <Filter Include="Source Files\gameObject\menu">
       <UniqueIdentifier>{fb588b92-9f62-44e5-99b8-68d3406bc8b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\globalStore">
+      <UniqueIdentifier>{995ebca9-1ad8-4193-b8b0-6cfecec6070a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\globalStore">
+      <UniqueIdentifier>{112c87cf-e1ca-4087-95e3-4b75db924e08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\FlatWhite.hpp">
@@ -140,6 +146,9 @@
     <ClInclude Include="..\include\gameObject\menu\Menu.hpp">
       <Filter>Header Files\gameObject\menu</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\globalStore\GlobalStore.hpp">
+      <Filter>Header Files\globalStore</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">
@@ -225,6 +234,9 @@
     </ClCompile>
     <ClCompile Include="..\src\gameObject\menu\Menu.cpp">
       <Filter>Source Files\gameObject\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\globalStore\GlobalStore.cpp">
+      <Filter>Source Files\globalStore</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -8,10 +8,16 @@ const Colour MENU_ITEM_DEFAULT_HIGHLIGHTED_COLOUR = Colour::Magenta;
 
 const OriginPoints MENU_ITEM_DEFAULT_ORIGIN = OriginPoints::CENTRE;
 
-MenuItem::MenuItem(std::string text, Vec2f position, std::function<void()> payload)
+MenuItem::MenuItem(
+    const std::string& text, 
+    const Font& font,
+    const Vec2f& position, 
+    std::function<void()> payload
+)
     : 
     MenuItem(
         text,
+        font,
         position,
         payload,
         MENU_ITEM_DEFAULT_NORMAL_COLOUR,
@@ -22,19 +28,19 @@ MenuItem::MenuItem(std::string text, Vec2f position, std::function<void()> paylo
 }
 
 MenuItem::MenuItem(
-    std::string text, 
-    Vec2f position, 
+    const std::string& text, 
+    const Font& font,
+    const Vec2f& position, 
     std::function<void()> payload,
-    Colour defaultColour, 
-    Colour highlightedColour,
+    const Colour& defaultColour, 
+    const Colour& highlightedColour,
     OriginPoints originPoint
 )
     :
     m_highlighted(false),
-    m_payload(payload)
+    m_payload(payload),
+    m_font(font)
 {
-    m_font.loadFromFile("font/arial.ttf");
-
     m_defaultColour = defaultColour;
 
     m_highlightedColour = highlightedColour;
@@ -44,10 +50,9 @@ MenuItem::MenuItem(
         m_font,
         m_defaultColour,
         position,
-        text
+        text,
+        originPoint
     );
-
-    m_text->setOrigin(originPoint);
 
     addComponent(m_text);
 

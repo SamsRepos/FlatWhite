@@ -162,6 +162,7 @@
     <ClInclude Include="..\include\gameObject\menu\MenuItem.hpp" />
     <ClInclude Include="..\include\gameObject\menu\Menu.hpp" />
     <ClInclude Include="..\include\game\Game.hpp" />
+    <ClInclude Include="..\include\globalStore\GlobalStore.hpp" />
     <ClInclude Include="..\include\space\PhysicsSpace.hpp" />
     <ClInclude Include="..\include\space\Space.hpp" />
     <ClInclude Include="..\include\system\DeltaClock.hpp" />
@@ -192,6 +193,7 @@
     <ClCompile Include="..\src\gameObject\menu\MenuItem.cpp" />
     <ClCompile Include="..\src\gameObject\menu\Menu.cpp" />
     <ClCompile Include="..\src\game\Game.cpp" />
+    <ClCompile Include="..\src\globalStore\GlobalStore.cpp" />
     <ClCompile Include="..\src\space\PhysicsSpace.cpp" />
     <ClCompile Include="..\src\space\Space.cpp" />
     <ClCompile Include="..\src\system\DeltaClock.cpp" />

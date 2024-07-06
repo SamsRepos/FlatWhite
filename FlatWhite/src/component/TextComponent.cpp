@@ -9,6 +9,7 @@ TextComponent::TextComponent(
 	const Colour& colour,
 	const Vec2f&  position,
 	const std::string& content,
+	OriginPoints originPoint,
 	float depth
 )
 	:
@@ -16,6 +17,7 @@ TextComponent::TextComponent(
 	m_font(font),
 	m_colour(colour),
 	m_position(position),
+	m_originPoint(originPoint),
 	m_content(content)
 
 {
@@ -23,12 +25,15 @@ TextComponent::TextComponent(
 	m_text.setFillColor(colour);
 	m_text.setPosition(position);
 	m_text.setString(content);
+	updateOrigin();
 }
 
 void TextComponent::setContent(const std::string& content) 
 { 
 	m_content = content; 
 	m_text.setString(content);
+
+	updateOrigin();
 }
 
 void TextComponent::setPosition(const Vec2f& position)
@@ -37,13 +42,31 @@ void TextComponent::setPosition(const Vec2f& position)
 	m_text.setPosition(position);
 }
 
-void TextComponent::setOrigin(const Vec2f& origin)
+void TextComponent::setOriginPoint(OriginPoints originPoint)
 {
-	m_origin = origin;
-	m_text.setOrigin(origin);
+	m_originPoint = originPoint;
+	updateOrigin();
 }
 
-void TextComponent::setOrigin(OriginPoints originPoint)
+void TextComponent::setColour(const fw::Colour& colour)
+{
+	m_text.setFillColor(colour);
+}
+
+//
+// PROTECTED:
+//
+
+void TextComponent::render(RenderTarget* window)
+{
+	window->draw(m_text);
+}
+
+//
+// PRIVATE:
+//
+
+void TextComponent::updateOrigin()
 {
 	float width = m_text.getGlobalBounds().width;
 	float height = m_text.getGlobalBounds().height;
@@ -51,7 +74,7 @@ void TextComponent::setOrigin(OriginPoints originPoint)
 	float halfWidth  = width / 2.f;
 	float halfHeight = height / 2.f;
 
-	switch(originPoint)
+	switch(m_originPoint)
 	{
 
 	case OriginPoints::TOP_LEFT:
@@ -86,20 +109,6 @@ void TextComponent::setOrigin(OriginPoints originPoint)
 	}
 
 	m_text.setOrigin(m_origin);
-}
-
-void TextComponent::setColour(const fw::Colour& colour)
-{
-	m_text.setFillColor(colour);
-}
-
-//
-// PROTECTED:
-//
-
-void TextComponent::render(RenderTarget* window)
-{
-	window->draw(m_text);
 }
 
 }

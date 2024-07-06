@@ -9,17 +9,19 @@ class MenuItem : public GameObject
 {
 public:
     MenuItem(
-        std::string text, 
-        Vec2f position, 
+        const std::string& text, 
+        const Font& font,
+        const Vec2f& position, 
         std::function<void()> payload
     );
 
     MenuItem(
-        std::string text, 
-        Vec2f position, 
+        const std::string& text, 
+        const Font& font,
+        const Vec2f& position, 
         std::function<void()> payload,
-        Colour defaultColour, 
-        Colour highlightedColour,
+        const Colour& defaultColour, 
+        const Colour& highlightedColour,
         OriginPoints originPoint
     );
 

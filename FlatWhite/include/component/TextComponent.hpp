@@ -23,6 +23,7 @@ public:
 		const Colour& colour,
 		const Vec2f&  position,
 		const std::string& content,
+		OriginPoints originPoint = OriginPoints::TOP_LEFT,
 		float depth = 10.f
 	);
 
@@ -31,8 +32,7 @@ public:
 	inline void setCharacterSize(const unsigned int& size) { m_text.setCharacterSize(size); };
 
 	void setPosition(const Vec2f& position);
-	void setOrigin(const Vec2f& origin);
-	void setOrigin(OriginPoints originPoint);
+	void setOriginPoint(OriginPoints originPoint);
 
 	void setColour(const fw::Colour& colour);
 
@@ -41,12 +41,15 @@ protected:
 	virtual void render(RenderTarget* window);
 
 private:
+	void updateOrigin();
+
 	Text m_text;
 
 	Font m_font;
 	Colour m_colour;
 	Vec2f m_position;
 	Vec2f m_origin;
+	OriginPoints m_originPoint = OriginPoints::TOP_LEFT;
 	std::string m_content;
 };
 }
