@@ -29,6 +29,8 @@ public:
 	Vec2f displacementTo(const Vec2f& other) const;
 	Vec2f displacementFrom(const Vec2f& other) const;
 
+	Vec2f operator*(float coeff);
+
 	inline static Vec2f zero()      { return Vec2f(0.f); };
 	inline static Vec2f unitLeft()  { return Vec2f(-1.f, 0.f); };
 	inline static Vec2f unitRight() { return Vec2f(1.f,  0.f); };

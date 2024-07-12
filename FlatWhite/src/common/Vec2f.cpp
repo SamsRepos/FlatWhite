@@ -100,4 +100,9 @@ Vec2f Vec2f::displacementFrom(const Vec2f& other) const
 	return (*this) - other;
 }
 
+Vec2f Vec2f::operator*(float coeff)
+{
+	return Vec2f(x * coeff, y * coeff);
+}
+
 }
