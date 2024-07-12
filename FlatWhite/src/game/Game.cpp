@@ -3,30 +3,39 @@
 #include "system/DeltaClock.hpp"
 #include "system/Window.hpp"
 
+
+
 namespace fw
 {
+    namespace
+    {
+        bool isToggleFullscreenNow(const Input& input)
+        {
+            if((input.isKeyDown(Keyboard::LAlt) || input.isKeyDown(Keyboard::RAlt)) && input.isKeyPressedNow(Keyboard::Enter))
+            {
+                return true;
+            }
 
-Game::Game()
+            if(input.isKeyPressedNow(Keyboard::F11))
+            {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+Game::Game(const GameConfig& gameConfig)
     :
     m_currentSpace(NULL),
-    m_moribund(false)
+    m_moribund(false),
+    m_gameConfig(gameConfig)
 {
 }
 
 //
 // INIT:
 //
-
-void Game::setWindowDimensions(int width, int height)
-{
-    m_windowData.width  = width;
-    m_windowData.height = height;
-}
-
-void Game::setWindowTitle(std::string title)
-{
-    m_windowData.title = title;
-}
 
 void Game::pushSpace(std::shared_ptr<Space> space)
 {
@@ -55,11 +64,15 @@ void Game::popSpace()
 
 void Game::run()
 {
-    auto window = std::make_shared<RenderWindow>(
-        m_windowData.width,
-        m_windowData.height,
-        m_windowData.title
+    m_window = std::make_shared<RenderWindow>(
+        m_gameConfig.windowWidth,
+        m_gameConfig.windowHeight,
+        m_gameConfig.windowTitle,
+        m_gameConfig.startFullscreen,
+        m_gameConfig.windowAdjustable
     );
+
+    m_isFullScreenNow = m_gameConfig.startFullscreen;
 
     srand(time(NULL));
 
@@ -77,10 +90,15 @@ void Game::run()
         m_currentSpace = m_spacesStack.top();
     }
 
-    while(window->isOpen() && !m_moribund)
+    while(m_window->isOpen() && !m_moribund)
     {
         input.perFrameUpdate();
-        window->pollAllEvents(&input);
+        m_window->pollAllEvents(&input);
+
+        if(m_gameConfig.fullScreenTogglable && isToggleFullscreenNow(input))
+        {
+            toggleFullscreen();
+        }
 
         m_currentSpace->handleInput(input);
         m_currentSpace->update(deltaClock.getDeltaTime());
@@ -91,16 +109,34 @@ void Game::run()
             popSpace();
         }
 
-        window->clear();
-        m_currentSpace->render(window.get());
-        window->display();
+        m_window->clear();
+        m_currentSpace->render(m_window.get());
+        m_window->display();
     }
 
-    if(window->isOpen())
+    if(m_window->isOpen())
     {
-        window->close();
+        m_window->close();
     }
 
+}
+
+
+//
+// PRIVATE:
+//
+
+void Game::toggleFullscreen()
+{
+    m_window = std::make_shared<RenderWindow>(
+        m_gameConfig.windowWidth,
+        m_gameConfig.windowHeight,
+        m_gameConfig.windowTitle,
+        !m_isFullScreenNow,
+        m_gameConfig.windowAdjustable
+    );
+
+    m_isFullScreenNow = !m_isFullScreenNow;
 }
 
 }

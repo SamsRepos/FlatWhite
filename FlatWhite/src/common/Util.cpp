@@ -139,7 +139,7 @@ size_t util::removeMoribundGameObjects(std::list<std::shared_ptr<GameObject>>& g
 	return deleted_items_num;
 }
 
-void util::DumpGameObjectHierarchy(std::list<std::shared_ptr<fw::GameObject>> gameObjects, std::string preStr)
+void util::dumpGameObjectHierarchy(std::list<std::shared_ptr<fw::GameObject>> gameObjects, std::string preStr)
 {
 	for (auto& gameObject : gameObjects)
 	{
@@ -148,10 +148,17 @@ void util::DumpGameObjectHierarchy(std::list<std::shared_ptr<fw::GameObject>> ga
 			
 		if (gameObject->getChildrenShallow().size() > 0) 
 		{
-			DumpGameObjectHierarchy(gameObject->getChildrenShallow(), (preStr + "  "));
+			dumpGameObjectHierarchy(gameObject->getChildrenShallow(), (preStr + "  "));
 		}
 	}
 	
+}
+
+Vec2f util::getDesktopResolution()
+{
+	sf::VideoMode videoMode = sf::VideoMode::getDesktopMode();
+	
+	return Vec2f(videoMode.width, videoMode.height);
 }
 
 }

@@ -50,9 +50,12 @@ public:
 	void perFrameUpdate();
 	void eventUpdate(const sf::Event& event);
 
-	bool isKeyDown(int key) const;
-	bool isKeyUp(int key) const;
-	bool isKeyPressedNow(int key) const;
+	bool isKeyDown(Keyboard::Key key) const;
+	bool areAllKeysDown(const std::vector<Keyboard::Key>& keys);
+	bool isKeyUp(Keyboard::Key key) const;
+	bool areAllKeysUp(const std::vector<Keyboard::Key>& keys);
+	bool isKeyPressedNow(Keyboard::Key key) const;
+	bool isKeyComboPressedNow(const std::vector<Keyboard::Key>& keys);
 	bool isAnyKeyPressedNow(const std::vector<Keyboard::Key>& keys) const;
 	bool isAnyKeyDown() const;
 	bool isAnyKeyDown(const std::vector<Keyboard::Key>& keys) const;

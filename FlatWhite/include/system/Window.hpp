@@ -13,7 +13,9 @@ public:
 	RenderWindow(
 		unsigned int width,
 		unsigned int height,
-		std::string title
+		std::string title,
+		bool startFullscreen,
+		bool windowAdjustable
 	);
 
 	void pollAllEvents(Input* input);

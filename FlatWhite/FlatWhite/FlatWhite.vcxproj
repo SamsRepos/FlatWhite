@@ -162,6 +162,7 @@
     <ClInclude Include="..\include\gameObject\menu\MenuItem.hpp" />
     <ClInclude Include="..\include\gameObject\menu\Menu.hpp" />
     <ClInclude Include="..\include\game\Game.hpp" />
+    <ClInclude Include="..\include\game\GameConfig.hpp" />
     <ClInclude Include="..\include\globalStore\GlobalStore.hpp" />
     <ClInclude Include="..\include\space\PhysicsSpace.hpp" />
     <ClInclude Include="..\include\space\Space.hpp" />

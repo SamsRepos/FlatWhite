@@ -149,6 +149,9 @@
     <ClInclude Include="..\include\globalStore\GlobalStore.hpp">
       <Filter>Header Files\globalStore</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\game\GameConfig.hpp">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\system\Input.cpp">

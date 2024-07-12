@@ -24,6 +24,7 @@
 #include "globalStore/GlobalStore.hpp"
 
 #include "game/Game.hpp"
+#include "game/GameConfig.hpp"
 
 #include "space/PhysicsSpace.hpp"
 #include "space/Space.hpp"

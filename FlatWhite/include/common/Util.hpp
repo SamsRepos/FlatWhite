@@ -74,7 +74,9 @@ namespace fw
 			return isType<Base, Derived>(basePtr.get());
 		};
 
-		void DumpGameObjectHierarchy(std::list<std::shared_ptr<fw::GameObject>> gameObjects, std::string preStr = "");
+		void dumpGameObjectHierarchy(std::list<std::shared_ptr<fw::GameObject>> gameObjects, std::string preStr = "");
+
+		Vec2f getDesktopResolution();
 	}
 
 }

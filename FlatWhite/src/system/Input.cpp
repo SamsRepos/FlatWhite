@@ -145,21 +145,41 @@ bool indexIsOutOfRange(int index, int range)
 	return index < 0 || index >= range;
 }
 
-bool Input::isKeyDown(int key) const
+bool Input::isKeyDown(Keyboard::Key key) const
 {
 	if (indexIsOutOfRange(key, KEYS_RANGE)) return false;
 
 	return m_keysDown[key];
 }
 
-bool Input::isKeyUp(int key) const
+bool Input::areAllKeysDown(const std::vector<Keyboard::Key>& keys)
+{
+	for(const Keyboard::Key& key : keys)
+	{
+		if(!isKeyDown(key)) return false;
+	}
+
+	return true;
+}
+
+bool Input::isKeyUp(Keyboard::Key key) const
 {
 	if (indexIsOutOfRange(key, KEYS_RANGE)) return false;
 
 	return !(m_keysDown[key]);
 }
 
-bool Input::isKeyPressedNow(int key) const
+bool Input::areAllKeysUp(const std::vector<Keyboard::Key>& keys)
+{
+	for(const Keyboard::Key& key : keys)
+	{
+		if(isKeyDown(key)) return false;
+	}
+
+	return true;
+}
+
+bool Input::isKeyPressedNow(Keyboard::Key key) const
 {
 	if(indexIsOutOfRange(key, KEYS_RANGE)) return false;
 
@@ -171,9 +191,14 @@ bool Input::isKeyPressedNow(int key) const
 	return res;
 }
 
+bool Input::isKeyComboPressedNow(const std::vector<Keyboard::Key>& keys)
+{
+	return areAllKeysDown(keys) && isAnyKeyPressedNow(keys);
+}
+
 bool Input::isAnyKeyPressedNow(const std::vector<Keyboard::Key>& keys) const
 {
-	for(const int& key : keys)
+	for(const Keyboard::Key& key : keys)
 	{
 		if(isKeyPressedNow(key)) return true;
 	}
@@ -188,7 +213,7 @@ bool Input::isAnyKeyDown() const
 
 bool Input::isAnyKeyDown(const std::vector<Keyboard::Key>& keys) const
 {
-	for(const int& key : keys)
+	for(const Keyboard::Key& key : keys)
 	{
 		if(isKeyDown(key)) return true;
 	}
